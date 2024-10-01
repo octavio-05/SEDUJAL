@@ -64,18 +64,18 @@
   <div class="col-sm-6 mb-3 mb-sm-0">
     <div class="card">
       <div class="card-body">
-        <h5 class="card-title">Special title treatment</h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
+        <h5 class="card-title">Alumnos</h5>
+        <p class="card-text">Agregar, modificar, o eliminiar a los alumnos.</p>
+        <a href="#" class="btn btn-primary">Administrar</a>
       </div>
     </div>
   </div>
   <div class="col-sm-6">
     <div class="card">
       <div class="card-body">
-        <h5 class="card-title">Special title treatment</h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
+        <h5 class="card-title">Docentes</h5>
+        <p class="card-text">Agregar, modificar, o eliminiar a los docentes.</p>
+        <a href="#" class="btn btn-primary">Administrar</a>
       </div>
     </div>
   </div>
@@ -85,18 +85,18 @@
   <div class="col-sm-6 mb-3 mb-sm-0">
     <div class="card">
       <div class="card-body">
-        <h5 class="card-title">Special title treatment</h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
+        <h5 class="card-title">Asignaturas</h5>
+        <p class="card-text">Agregar, modificar, o eliminiar las asignaturas.</p>
+        <a href="#" class="btn btn-primary">Administrar</a>
       </div>
     </div>
   </div>
   <div class="col-sm-6">
     <div class="card">
       <div class="card-body">
-        <h5 class="card-title">Special title treatment</h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
+        <h5 class="card-title">Cuestionarios</h5>
+        <p class="card-text">Agregar, modificar, o eliminiar los cuestionarios.</p>
+        <a href="#" class="btn btn-primary">Administrar</a>
       </div>
     </div>
   </div>
