@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -13,6 +13,7 @@
     <link href="helpers/fontawesome-6.4.2-web/css/brands.min.css" rel="stylesheet">
     <link href="helpers/fontawesome-6.4.2-web/css/solid.min.css" rel="stylesheet">
     <link href="assets/css/main.css" rel="stylesheet">
+    <link rel="stylesheet" href="//cdn.datatables.net/2.1.8/css/dataTables.dataTables.min.css">
     <!-- End Sheet styles -->
 </head>
 <!-- <header>SISTEMA DE EVALUACIÓN DOCENTE UNIJAL</header> -->
@@ -127,6 +128,11 @@
         <script src="helpers/moment-18.1/moment.min.js"></script>
         <script src="helpers/bootstrap-5.0.2-dist/js/bootstrap.bundle.js"></script>
         <script src="helpers/DataTables/datatables.min.css" ></script>
+        <script src="//cdn.datatables.net/2.1.8/js/dataTables.min.js"></script>
+
+        <script>
+          let table = new DataTable('#myTable');
+        </script>
     <!-- Ends  Scripts -->
 </body>
 </html>
