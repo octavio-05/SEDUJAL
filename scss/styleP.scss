@@ -1,0 +1,226 @@
+/* Colors */
+$primary_color:#262535;
+$secondary_color:#80C41C;
+$third_color:#162327;
+$light_color:#E7EDE9;
+
+.container-fixed{
+  padding: 0;
+}
+
+.login-info-fluid {
+  padding-top: 30px;
+}
+
+.transparencia{
+  padding: 0;
+  margin: -10;
+  width: 100%;
+  background: rgba(255,255,255,0.4);
+}
+
+.login-info {
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.login-info .paragraph_title {
+  margin-top: 13px;
+  font-size: 3em;
+  padding-bottom: 20px;
+
+}
+
+.paragraph_justify{
+  text-align: justify;
+}
+
+.login-info .password {
+  color:#DDD;
+
+}
+
+.login-info .paragraph_justify {
+  font-size: 1.5em;
+}
+
+.login-box-plain{
+  padding: 1rem;
+  border-style: solid;
+  border-width: thin;
+  border-color: #262535;
+  background: rgba(114,114,114,0.6);
+
+}
+
+.navbar-header{
+  background-color:#262535;
+}
+
+.img-responsive {
+  display: block;
+  max-width: 90%;
+  height: auto;
+  outline: none;
+}
+
+.footer-contact-detail-section h1{
+  font-size: 2rem;
+}
+
+.footer-contact-detail-section{
+  background: none repeat scroll 0 0 #80c41c;
+  margin: 0;
+  padding: 20px 0;
+  width: 100%;
+  color:#FFF;
+}
+
+.media-body h4{
+  font-size: 1.2rem;
+}
+
+.media-body h4 a{
+  color:white;
+}
+
+.footer-contact-icon{
+  float: left;
+  margin: 0 25px 0 0;
+  padding: 0;
+  font-size: 2rem;
+}
+
+.footer-contact-icon i {
+  font-size: 45px;
+  color: #ffffff;
+  transition: all 0.3s ease-in-out 0s;
+}
+
+.fa {
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  text-rendering: auto;
+}
+
+.login-helpers a,
+.color-unijal{
+  color: $primary_color;
+}
+
+// panel alumnos
+
+.btn-menu-main{
+  border: none;
+  background: transparent;
+}
+
+.ico-menu-main,
+.btn-close-session{
+  color: white;
+  font-size: 1.2rem;
+  padding: 0.4rem;
+}
+
+.btn-close-session {
+  float: right;
+  padding: .65rem .75rem;
+  font-size: 1.25rem;
+  line-height: 1;
+}
+/*
+.sidebarNavigation{
+  margin-bottom:0;
+  z-index:999;
+  justify-content:flex-start
+}
+*/
+.sidebarNav{
+  border: 1px solid #232331;
+  padding: 0;
+}
+
+.header-sidebarNav{
+  margin: 0;
+  padding-top: 1rem;
+  width: 100%;
+  background-color: #232331;
+  padding-bottom: 1rem;
+}
+
+.header-sidebarNav h5 {
+  margin-top: .8rem;
+  margin-bottom: .8rem;
+  font-size: 1rem;
+  color: white;
+}
+
+.header-sidebarNav p {
+  margin: 0;
+  font-size: .8rem;
+  color: #b3b3b3;
+}
+
+.header-sidebarNav-img {
+  width: 100px;
+  height: auto;
+  border-radius:150px;
+  border: 2px white solid;
+  background-color: $secondary_color;
+}
+
+.nav-link{
+  color: $primary_color;
+}
+
+.active .nav-link{
+  color: #10431b;
+  font-weight: bold;
+}
+
+.nav-link i{
+  width: 1.5rem;
+  margin-right: 1.5rem;
+}
+
+
+.options-navbar{
+  padding-top: 1rem;
+}
+
+.icons-teacher-assignment{
+  color: $secondary_color;
+  padding: 0.4rem;
+  text-shadow: 1px 1px 2px #0b2e13;
+}
+
+.sidebarNavigationAlumno {
+  background-color: $secondary_color;
+  border: 1px solid $secondary_color;
+}
+
+.header-sidebarNavAlumno {
+  background-color: #40610E;
+}
+
+.sidebarNavAlumno{
+  border: 1px solid #40610E;
+  padding: 0;
+}
+
+.login-logo {
+  width: 200px;
+  height: auto; }
+
+.table-calif {
+  font-size: 14px; }
+
+.no-inscripcion {
+  color: darkred; }
+
+.banner-txt {
+  color: white;
+  padding-top: .5rem;
+  padding-bottom: .5rem;
+  padding-left: 1rem;
+  margin-bottom: 0; }
