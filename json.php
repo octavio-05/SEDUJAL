@@ -1,16 +1,17 @@
 <?php
-include ("conexion.php");
+include "conexion.php";
 
-$sql = "select * from carreras";
+// Consulta y conversión a JSON
+$sql = "SELECT * FROM carreras";
+$stmt = $conexion->prepare($sql);
+$stmt->execute();
+$resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-$result = mysqli_query($conexion, $sql);
-
-$data = array();
-
-    while($row = mysqli_fetch_assoc($result)){
-        $data [] = $row;
-    }
-    echo json_encode($data);
-
-
+// Convertir a JSON y mostrar
+$json = json_encode($resultados);
+    echo $json;
 ?>
+
+
+
+
