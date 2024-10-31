@@ -1,5 +1,5 @@
 <?php
-include "conexion.php";
+include "../conexion.php";
 
 // Consulta y conversión a JSON
 $sql = "SELECT * FROM alumnos";

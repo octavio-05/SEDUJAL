@@ -32,7 +32,7 @@
             $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             // echo "Conexion realizada con exito";
         } catch (PDOException $ex) {
-            Logger::error('E001', $ex->getMessage());            
+            // Logger::error('E001', $ex->getMessage());            
             $conexion = $ex->getMessage();
             echo "Conexion Fallada" . $ex->getMessage();
             exit;
