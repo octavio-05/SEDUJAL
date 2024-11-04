@@ -1,53 +1,4 @@
-<div class="container my-5">
-        <h2 class="mb-4">ALUMNOS</h2>
-        <button class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#alumnoModal" onclick="limpiarFormulario()">Agregar Alumno</button>
-        
-        <table id="tablaAlumnos" class="table table-striped" style="width:100%">
-            <thead>
-                <tr>
-                    <th>Numero de control</th>
-                    <th>Nombre</th>
-                    <th>Id Carrera</th>
-                    <th>Fecha de ingreso</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
-        </table>
-    </div>
-
-    <div class="modal fade" id="alumnoModal" tabindex="-1" aria-labelledby="alumnoModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="alumnoModalLabel">Agregar/Editar Alumno</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form id="formAlumno">
-                        <div class="mb-3">
-                            <label for="num_control" class="form-label">Número de control</label>
-                            <input type="text" class="form-control" id="num_control" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="nombre" class="form-label">Nombre</label>
-                            <input type="text" class="form-control" id="nombre" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="id_carrera" class="form-label">Id Carrera</label>
-                            <input type="text" class="form-control" id="id_carrera" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="fecha_ingreso" class="form-label">Fecha ingreso</label>
-                            <input type="date" class="form-control" id="fecha_ingreso" required>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Guardar</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    <script>
-        let tabla;
+let tabla;
         let modoEdicion = false;
         $(document).ready(function() {
             tabla = $('#tablaAlumnos').DataTable({
@@ -118,4 +69,3 @@
                 });
             }
         }
-    </script>

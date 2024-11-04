@@ -1,5 +1,15 @@
-<div class="container my-5">
-        <h2 class="mb-4">ALUMNOS</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
+</head>
+<body>
+    <div class="container my-5">
+        <h2 class="mb-4">Tabla Dinámica de Alumnos</h2>
         <button class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#alumnoModal" onclick="limpiarFormulario()">Agregar Alumno</button>
         
         <table id="tablaAlumnos" class="table table-striped" style="width:100%">
@@ -46,6 +56,13 @@
             </div>
         </div>
     </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <!-- <script src="ajax-alumno.js"></script> -->
+    <!-- <script src="tabla.js"></script> -->
+
     <script>
         let tabla;
         let modoEdicion = false;
@@ -119,3 +136,5 @@
             }
         }
     </script>
+</body>
+</html>
