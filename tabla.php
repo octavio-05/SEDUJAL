@@ -27,38 +27,6 @@
         <div class="row">
             <div class="col-12" id="tabla">
 
-
-
-            <!-- <table class="table" >
-  <thead class="table-dark">
-    <tr>
-      <th scope="col">Num. Control</th>
-      <th scope="col">Nombre Alumno</th>
-      <th scope="col">Carrera</th>
-      <th scope="col">Cuatrimestre</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td colspan="2">Larry the Bird</td>
-      <td>@twitter</td>
-    </tr>
-  </tbody>
-</table> -->
-
             </div>
         </div>
     </div>

@@ -6,6 +6,6 @@
  * Time: 1:48 PM
  */
 
-header("Location: sedujal/");
+header("Location: adminplace/");
 
 ?>

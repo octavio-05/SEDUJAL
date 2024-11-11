@@ -7,7 +7,7 @@
                 <tr>
                     <th>Numero de control</th>
                     <th>Nombre</th>
-                    <th>Carrera</th>
+                    <th>Id Carrera</th>
                     <th>Fecha de ingreso</th>
                     <th>Acciones</th>
                 </tr>
@@ -33,11 +33,10 @@
                             <input type="text" class="form-control" id="nombre" required>
                         </div>
                         <div class="mb-3">
-                            <label for="id_carrera" class="form-label">Carrera</label>
-                            <select class="form-control" id="id_carrera" required></select>
+                            <label for="id_carrera" class="form-label">Id Carrera</label>
+                            <input type="text" class="form-control" id="id_carrera" required>
                         </div>
-                        <p></p>
-                        <div class="mb-5">
+                        <div class="mb-3">
                             <label for="fecha_ingreso" class="form-label">Fecha ingreso</label>
                             <input type="date" class="form-control" id="fecha_ingreso" required>
                         </div>
@@ -47,32 +46,8 @@
             </div>
         </div>
     </div>
-        
-    </div>
-
-    
-    <!-- Fin de modal -->
-
-        <!-- Scripts -->
-        <script src="../helpers/jquery-3.7/jquery-3.7.1.min.js"></script>
-        <script src="../helpers/popper-2.11.8/popper.min.js"></script>
-        <script src="../helpers/moment-18.1/moment.min.js"></script>
-        <script src="../helpers/bootstrap-5.0.2-dist/js/bootstrap.bundle.js"></script>
-        <!-- <script src="helpers/DataTables/datatables.min.css" ></script> -->
-        <script src="//cdn.datatables.net/2.1.8/js/dataTables.min.js"></script>
-
-        <!-- <script src="ajax-alumno.js"></script> -->
-    <!-- <script src="../js/jquery-3.3.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="../js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
-    <script src="../js/b4_sidebar.js"></script>
-    <script src="../js/moment.js"></script>
-    <script src="../js/ajax-alumno.js"></script>
-    <script src="//cdn.datatables.net/2.1.8/js/dataTables.min.js"></script>
-    <script src="../helpers/bootstrap-5.0.2-dist/js/bootstrap.bundle.js"></script>
-     -->
     <script>
-       let tabla;
+        let tabla;
         let modoEdicion = false;
         $(document).ready(function() {
             tabla = $('#tablaAlumnos').DataTable({
@@ -83,7 +58,7 @@
                 columns: [
                     { "data": "num_control" },
                     { "data": "nombre" },
-                    { "data": "nombre_carrera" },
+                    { "data": "id_carrera" },
                     { "data": "fecha_inscripcion" },
                     {
                         data: null,
@@ -143,25 +118,4 @@
                 });
             }
         }
-       
-    // Cargar opciones de carreras
-    function cargarCarreras() {
-    $.ajax({
-        url: 'obtener_carreras.php', 
-        method: 'GET',
-        dataType: 'json',
-        success: function(data) {
-            let selectCarreras = $('#id_carrera');
-            selectCarreras.empty(); // Limpiar opciones anteriores
-            data.forEach(function(carrera) {
-                selectCarreras.append(`<option value="${carrera.id_carrera}">${carrera.nombre}</option>`);
-            });
-        },
-        error: function(xhr, status, error) {
-            console.error("Error al obtener las carreras:", error);
-        }
-    });
-}
-cargarCarreras();
-
     </script>
