@@ -13,38 +13,77 @@
     <body>
 
     <div class="container-fluid login-info-fluid">
-        <div class="container" style="font-size: 1em">
-            <div class="row">
-                <div class="col-md-4 offset-md-4">
-                    <div class="login-intern-box" style="opacity: 1;">
-                        <p style="text-align: center">
-                            <img class="login-logo" src="images/logo-vertical.jpg"/></p>
+    <div class="container" style="font-size: 1em">
+        <div class="row">
+            <div class="col-md-4 offset-md-4">
+                <div class="login-intern-box" style="opacity: 1;">
+                    <p style="text-align: center">
+                        <img class="login-logo" src="images/logo-vertical.jpg"/>
+                    </p>
 
-                        <form role="form"  name="frm" id="frm">
-                            <div class="form-group">
-                                <label for="correo">Usuario</label>
-                                <input type="email" class="form-control" id="uemail" name="uemail" >
-                            </div>
-                            <div class="form-group">
-                                <label for="passwd">Contraseña</label>
-                                <input type="password" class="form-control" id="passwd" name="passwd" >
-                            </div>
-                            <div class="form-group" style="text-align: center">
-                                <button id="btn_login" class="btn btn-primary btn-sm" style="text-decoration: none; background-color: #7FC41C; border-color: #7FC41C" type="button">Iniciar sesión</button>
-                            </div>
-                        </form>
-                        <div id="msgArea"></div>
-                    </div>
+                    <form role="form" name="frm" id="frm" method="POST" action="login.php">
+                        <div class="form-group">
+                            <label for="id_usuario">Usuario</label>
+                            <input type="text" class="form-control" id="id_usuario" name="id_usuario" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Contraseña</label>
+                            <input type="password" class="form-control" id="password" name="password" required>
+                        </div>
+                        <div class="form-group" style="text-align: center">
+                            <button id="btn_login" class="btn btn-primary btn-sm" style="text-decoration: none; background-color: #7FC41C; border-color: #7FC41C" type="submit">Iniciar sesión</button>
+                        </div>
+                    </form>
+                    <div id="msgArea"></div>
                 </div>
             </div>
         </div>
     </div>
+</div>
+<?php
+session_start();
+include "conexion.php"; // Conectar a la base de datos
+
+// Verificar si se han enviado el usuario y la contraseña
+if (isset($_POST['id_usuario']) && isset($_POST['password'])) {
+    $id_usuario = $_POST['id_usuario'];
+    $password = $_POST['password'];
+
+    // Preparar la consulta para buscar el usuario y verificar su rol
+    $sql = "SELECT rol FROM usuarios WHERE id_usuario = :id_usuario AND password = :password";
+    $stmt = $conexion->prepare($sql);
+    $stmt->bindParam(':id_usuario', $id_usuario);
+    $stmt->bindParam(':password', $password);
+    $stmt->execute();
+
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if ($user) {
+        $_SESSION['id_usuario'] = $id_usuario;
+        $_SESSION['rol'] = $user['rol'];
+
+        if ($user['rol'] == 'admin') {
+            // Redirigir a la vista de administración
+            header("Location: adminplace/index.php");
+        } elseif ($user['rol'] == 'alumno') {
+            // Redirigir a la vista de respuestas de formularios
+            header("Location: userplace/index.php");
+        }
+        exit();
+    } else {
+        // Enviar mensaje de error de autenticación
+        echo "<script>document.getElementById('msgArea').innerText = 'Usuario o contraseña incorrectos';</script>";
+    }
+} else {
+    echo "<script>document.getElementById('msgArea').innerText = 'Por favor, complete todos los campos';</script>";
+}
+?>
 
 
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
-        
+    <!-- <script src="auth_login.php"></script>     -->
     </body>
 </html>
 
