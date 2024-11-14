@@ -50,6 +50,8 @@
         <script src="../helpers/moment-18.1/moment.min.js"></script>
         <script src="../helpers/bootstrap-5.0.2-dist/js/bootstrap.bundle.js"></script>
         <script src="//cdn.datatables.net/2.1.8/js/dataTables.min.js"></script>
+        
+        <script src="../js/b4_sidebar.js"></script>
 
     <script>
        let tabla;

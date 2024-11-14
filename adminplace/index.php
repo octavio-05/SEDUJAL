@@ -48,7 +48,7 @@
                         <a class="nav-link" href="../alumnos/alumnos.php"><i class="fas fa-user-graduate"></i> Alumnos</a>
                     </li>
                     <li class="nav-item">
-                        <a id="link-docentes" class="nav-link" href="#"><i class="fa fa-university"></i> Docentes</a>
+                    <a class="nav-link" href="../docentes/docentes.php"><i class="fa fa-university"></i> Docentes</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="../asignaturas/asignaturas.php"><i class="fa fa-book"></i> Asignaturas</a>
@@ -69,7 +69,9 @@
 </header>
 
 <div class="container" id="mainContent">
-
+        <?php 
+           include ('content.php');
+        ?>
 </div>
 
 <!-- Fin de modal -->
