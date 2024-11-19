@@ -41,7 +41,7 @@
             <div class="options-navbar">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="./">
+                        <a class="nav-link" href="../adminplace/">
                             <i class="fas fa-home"></i> Inicio
                         </a>
                     </li>
@@ -59,6 +59,9 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="../usuarios/usuarios.php"><i class="fa fa-address-card"></i> Usuarios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../evaluacion/formulario-asignacion.php"><i class="fa fa-archive"></i> Evaluación Docente</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="../helpers/cerrar_session.php"><i class="fas fa-sign-out-alt"></i> Cerrar Sesion</a>

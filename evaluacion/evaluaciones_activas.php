@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>CONTROL ESCOLAR UNIJAL</title>
+        <title>Evaluaciones</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
         <link rel="stylesheet" href="../css/bootstrap.min.css">
@@ -42,7 +42,7 @@
                 <div class="options-navbar">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item active">
-                            <a class="nav-link" href="./">
+                            <a class="nav-link" href="../userplace/index.php">
                                 <i class="fas fa-home"></i>
                                 Inicio
                             </a>
@@ -61,24 +61,62 @@
             </div>
         </nav>
     </header>
+    <?php
+include('../conexion.php'); // Archivo de conexión con PDO
+
+
+// Consulta para obtener evaluaciones activas
+$hoy = date('Y-m-d');
+$query = "SELECT e.id_evaluacion, a.nombre AS asignatura, e.fecha_inicio, e.fecha_fin 
+          FROM evaluacion e
+          INNER JOIN asignaturas a ON e.id_asignatura = a.id_asignatura
+          WHERE e.fecha_inicio <= :hoy AND e.fecha_fin >= :hoy";
+$stmt = $conexion->prepare($query);
+$stmt->bindValue(':hoy', $hoy, PDO::PARAM_STR);
+$stmt->execute();
+$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+?>
+
 
     <div class="container" id="mainContent">
 
-        <?php
-            include ('content.php');
-        ?>
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Evaluaciones Activas</h1>
+    <table class="table table-bordered table-striped">
+        <thead class="table-dark">
+            <tr>
+                <th>ID Evaluación</th>
+                <th>Asignatura</th>
+                <th>Fecha de Inicio</th>
+                <th>Fecha de Fin</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($result as $row): ?>
+            <tr>
+                <td><?= htmlspecialchars($row['id_evaluacion']); ?></td>
+                <td><?= htmlspecialchars($row['asignatura']); ?></td>
+                <td><?= htmlspecialchars($row['fecha_inicio']); ?></td>
+                <td><?= htmlspecialchars($row['fecha_fin']); ?></td>
+                <td>
+                    <a href="formulario_respuesta.php?id_evaluacion=<?= htmlspecialchars($row['id_evaluacion']); ?>" 
+                       class="btn btn-primary">Responder</a>
+                </td>
+            </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+</div>
 
-    </div>
-
-    
-    <!-- Fin de modal -->
-    <script src="../js/jquery-3.3.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="../js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
-    <script src="../js/b4_sidebar.js"></script>
-    <script src="../js/moment.js"></script>
-    
-    </body>
+        <!-- Scripts -->
+        <script src="../helpers/jquery-3.7/jquery-3.7.1.min.js"></script>
+        <script src="../helpers/popper-2.11.8/popper.min.js"></script>
+        <script src="../helpers/moment-18.1/moment.min.js"></script>
+        <script src="../helpers/bootstrap-5.0.2-dist/js/bootstrap.bundle.js"></script>
+        <script src="//cdn.datatables.net/2.1.8/js/dataTables.min.js"></script>
+        <script src="../js/b4_sidebar.js"></script>
+</body>
 </html>
 
 

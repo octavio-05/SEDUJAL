@@ -1,44 +1,50 @@
 <div class="container my-5">
-        <h2 class="mb-4">ALUMNOS</h2>
-        <button class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#alumnoModal" onclick="limpiarFormulario()">Agregar Alumno</button>
+        <h2 class="mb-4">ASIGNATURAS</h2>
+        <button class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#asignaturaModal" onclick="limpiarFormulario()">Agregar Asignatura</button>
         
-        <table id="tablaAlumnos" class="table table-striped" style="width:100%">
+        <table id="tablaAsignatura" class="table table-striped" style="width:100%">
             <thead>
                 <tr>
-                    <th>Numero de control</th>
-                    <th>Nombre</th>
-                    <th>Id Carrera</th>
-                    <th>Fecha de ingreso</th>
-                    <th>Acciones</th>
+                        <th>ID Asignatura</th>
+                        <th>Nombre</th>
+                        <th>Docente</th>
+                        <th>Cuatrimestre</th>
+                        <th>Carrera</th>
+                        <th>Acciones</th>
                 </tr>
             </thead>
         </table>
     </div>
 
-    <div class="modal fade" id="alumnoModal" tabindex="-1" aria-labelledby="alumnoModalLabel" aria-hidden="true">
+    <div class="modal fade" id="asignaturaModal" tabindex="-1" aria-labelledby="asignaturaModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="alumnoModalLabel">Agregar/Editar Alumno</h5>
+                    <h5 class="modal-title" id="asignaturaModalLabel">Agregar/Editar Asignatura</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form id="formAlumno">
+                    <form id="formAsignatura">
                         <div class="mb-3">
-                            <label for="num_control" class="form-label">Número de control</label>
-                            <input type="text" class="form-control" id="num_control" required>
+                            <label for="id_asignatura" class="form-label">ID Asignatura</label>
+                            <input type="number" class="form-control" id="id_asignatura" required>
                         </div>
                         <div class="mb-3">
                             <label for="nombre" class="form-label">Nombre</label>
                             <input type="text" class="form-control" id="nombre" required>
                         </div>
                         <div class="mb-3">
-                            <label for="id_carrera" class="form-label">Id Carrera</label>
-                            <input type="text" class="form-control" id="id_carrera" required>
+                            <label for="id_docente" class="form-label">Docente</label>
+                            <select class="form-control" id="id_docente" required></select>
                         </div>
-                        <div class="mb-3">
-                            <label for="fecha_ingreso" class="form-label">Fecha ingreso</label>
-                            <input type="date" class="form-control" id="fecha_ingreso" required>
+                        <p></p>
+                        <div class="mb-5">
+                            <label for="cuatrimestre" class="form-label">Cuatrimestre</label>
+                            <input type="number" class="form-control" id="cuatrimestre" required>
+                        </div>
+                        <div class="mb-5">
+                            <label for="id_carrera" class="form-label">Carrera</label>
+                            <select class="form-control" id="id_carrera" required></select>
                         </div>
                         <button type="submit" class="btn btn-primary">Guardar</button>
                     </form>
@@ -46,76 +52,133 @@
             </div>
         </div>
     </div>
+        
+    </div>
+
+    
+    <!-- Fin de modal -->
+
+        <!-- Scripts -->
+        <script src="../helpers/jquery-3.7/jquery-3.7.1.min.js"></script>
+        <script src="../helpers/popper-2.11.8/popper.min.js"></script>
+        <script src="../helpers/moment-18.1/moment.min.js"></script>
+        <script src="../helpers/bootstrap-5.0.2-dist/js/bootstrap.bundle.js"></script>
+        <script src="//cdn.datatables.net/2.1.8/js/dataTables.min.js"></script>
+        <script src="../js/b4_sidebar.js"></script>
+
     <script>
-        let tabla;
+       let tabla;
         let modoEdicion = false;
         $(document).ready(function() {
-            tabla = $('#tablaAlumnos').DataTable({
-                ajax: {
-                    url: 'json-alumno.php',
-                    dataSrc: ''
-                },
-                columns: [
-                    { "data": "num_control" },
-                    { "data": "nombre" },
-                    { "data": "id_carrera" },
-                    { "data": "fecha_inscripcion" },
-                    {
-                        data: null,
-                        render: function(data, type, row) {
-                            return `
-                                <button class="btn btn-warning btn-sm" onclick="editarAlumno('${row.num_control}')">Editar</button>
-                                <button class="btn btn-danger btn-sm" onclick="eliminarAlumno('${row.num_control}')">Eliminar</button>
-                            `;
-                        }
-                    }
-                ]
-            });
+    tabla = $('#tablaAsignatura').DataTable({
+        ajax: {
+            url: 'json-asignaturas.php',
+            dataSrc: ''
+        },
+        columns: [
+            { "data": "id_asignatura" },
+            { "data": "nombre" },
+            { "data": "nombre_docente" },  // Nombre del docente
+            { "data": "cuatrimestre" },
+            { "data": "nombre_carrera" },  // Nombre de la carrera
+            {
+                data: null,
+                render: function(data, type, row) {
+                    return `
+                        <button class="btn btn-warning btn-sm" onclick="editarAsignatura('${row.id_asignatura}')">Editar</button>
+                    `;
+                }
+            }
+        ]
+    });
 
-            $('#formAlumno').on('submit', function(e) {
+
+
+            $('#formAsignatura').on('submit', function(e) {
                 e.preventDefault();
-                let num_control = $('#num_control').val();
-                let url = modoEdicion ? 'actualizar_alumno.php' : 'agregar_alumno.php';
+                let id_asignatura = $('#id_asignatura').val();
+                let url = modoEdicion ? 'actualizar_asignatura.php' : 'agregar_asignatura.php';
                 let datos = {
-                    num_control: num_control,
+                    id_asignatura: id_asignatura,
                     nombre: $('#nombre').val(),
+                    id_docente: $('#id_docente').val(),
+                    cuatrimestre: $('#cuatrimestre').val(),
                     id_carrera: $('#id_carrera').val(),
-                    fecha_inscripcion: $('#fecha_ingreso').val(),
-                    
                 };
                 console.log("Enviando datos:", datos);
                 $.post(url, datos, function(response) {
                     console.log("Respuesta del servidor al agregar:", response);
-                    $('#alumnoModal').modal('hide');
+                    $('#asignaturaModal').modal('hide');
                     tabla.ajax.reload();
                 });
             });
         });
 
         function limpiarFormulario() {
-            $('#formAlumno')[0].reset();
-            $('#num_control').val('');
+            $('#formAsignatura')[0].reset();
+            $('#id_asignatura').val('');
             modoEdicion = false;
         }
 
-        function editarAlumno(num_control) {
-            $.get('obtener_alumno.php', { num_control: num_control }, function(data) {
-                $('#num_control').val(data.num_control);
+        function editarAsignatura(id_asignatura) {
+            $.get('obtener_asignatura.php', { id_asignatura: id_asignatura }, function(data) {
+                console.log(data);
+                $('#id_asignatura').val(data.id_asignatura);
                 $('#nombre').val(data.nombre);
+                $('#id_docente').val(data.id_docente);
+                $('#cuatrimestre').val(data.cuatrimestre);
                 $('#id_carrera').val(data.id_carrera);
-                $('#fecha_ingreso').val(data.fecha_inscripcion);
-                $('#alumnoModal').modal('show');
+                $('#asignaturaModal').modal('show');
                 modoEdicion = true;
             }, 'json');
         }
 
-        function eliminarAlumno(num_control) {
-            console.log("ID a eliminar:", num_control); // Verifica que el id sea correcto
+        function eliminarAsignatura(id_asignatura) {
+            console.log("ID a eliminar:", id_asignatura); // Verifica que el id sea correcto
             if (confirm('¿Estás seguro de que deseas eliminar este alumno?')) {
-                $.post('eliminar_alumno.php', { num_control: num_control }, function(response) {
+                $.post('eliminar_asignatura.php', { id_asignatura: id_asignatura }, function(response) {
                     console.log("Respuesta de eliminación:", response); 
                     tabla.ajax.reload();
                 });
             }
         }
+       
+    // Cargar opciones de carreras
+    function cargarDocentes() {
+    $.ajax({
+        url: 'obtener_docente.php', 
+        method: 'GET',
+        dataType: 'json',
+        success: function(data) {
+            let selectDocentes = $('#id_docente');
+            selectDocentes.empty(); // Limpiar opciones anteriores
+            data.forEach(function(carrera) {
+                selectDocentes.append(`<option value="${carrera.id_docente}">${carrera.nombre}</option>`);
+            });
+        },
+        error: function(xhr, status, error) {
+            console.error("Error al obtener los docentes:", error);
+        }
+    });
+}
+function cargarCarreras() {
+    $.ajax({
+        url: 'obtener_carreras.php', 
+        method: 'GET',
+        dataType: 'json',
+        success: function(data) {
+            let selectCarreras = $('#id_carrera');
+            selectCarreras.empty(); // Limpiar opciones anteriores
+            data.forEach(function(carrera) {
+                selectCarreras.append(`<option value="${carrera.id_carrera}">${carrera.nombre}</option>`);
+            });
+        },
+        error: function(xhr, status, error) {
+            console.error("Error al obtener las carreras:", error);
+        }
+    });
+}
+cargarCarreras();
+cargarDocentes();
+
     </script>

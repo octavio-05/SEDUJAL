@@ -40,7 +40,7 @@
             <div class="options-navbar">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="./">
+                        <a class="nav-link" href="../adminplace/">
                             <i class="fas fa-home"></i> Inicio
                         </a>
                     </li>
@@ -60,6 +60,9 @@
                         <a class="nav-link" href="../usuarios/usuarios.php"><i class="fa fa-address-card"></i> Usuarios</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="../evaluacion/formulario-asignacion.php"><i class="fa fa-archive"></i> Evaluación Docente</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="../helpers/cerrar_session.php"><i class="fas fa-sign-out-alt"></i> Cerrar Sesion</a>
                     </li>
                 </ul>
@@ -75,35 +78,14 @@
 </div>
 
 <!-- Fin de modal -->
-<script src="../js/jquery-3.3.1.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-<script src="../js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
-<script src="../js/b4_sidebar.js"></script>
-<script src="../js/moment.js"></script>
+        <script src="../helpers/jquery-3.7/jquery-3.7.1.min.js"></script>
+        <script src="../helpers/popper-2.11.8/popper.min.js"></script>
+        <script src="../helpers/moment-18.1/moment.min.js"></script>
+        <script src="../helpers/bootstrap-5.0.2-dist/js/bootstrap.bundle.js"></script>
+        <script src="//cdn.datatables.net/2.1.8/js/dataTables.min.js"></script>
+        <script src="../js/b4_sidebar.js"></script>
 
-<script>
-// Función para cargar contenido en el div #mainContent
-function loadContent(url) {
-    fetch(url)
-        .then(response => {
-            if (!response.ok) throw new Error('Error al cargar el contenido');
-            return response.text();
-        })
-        .then(data => {
-            document.getElementById('mainContent').innerHTML = data;
-        })
-        .catch(error => {
-            document.getElementById('mainContent').innerHTML = '<p>Error al cargar el contenido.</p>';
-            console.error('Error:', error);
-        });
-}
 
-// Configurar el evento del enlace "Docentes"
-document.getElementById("link-docentes").addEventListener("click", function(event) {
-    event.preventDefault(); // Evita que el enlace recargue la página
-    loadContent('../docentes/content.php');
-});
-</script>
 
 </body>
 </html>

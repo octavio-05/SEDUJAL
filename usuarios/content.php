@@ -7,7 +7,7 @@
                 <tr>
                     <th>id_usuario</th>
                     <th>Rol</th>
-                    <th>Contraseña</th>
+                    <!-- <th>Contraseña</th> -->
                     <th>Fecha de actualización</th>
                     <th>Acciones</th>
                 </tr>
@@ -70,14 +70,13 @@
                 columns: [
                     { "data": "id_usuario" },
                     { "data": "rol" },
-                    { "data": "password" },
+                    // { "data": "password" },
                     { "data": "fecha_actualizacion" },
                     {
                         data: null,
                         render: function(data, type, row) {
                             return `
                                 <button class="btn btn-warning btn-sm" onclick="editarAlumno('${row.id_usuario}')">Editar</button>
-                                <button class="btn btn-danger btn-sm" onclick="eliminarAlumno('${row.id_usuario}')">Eliminar</button>
                             `;
                         }
                     }

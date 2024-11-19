@@ -1,5 +1,7 @@
 <?php
 session_start();
+$_SESSION['id_usuario'] = $id_usuario; // Aquí `$id_usuario` es el número de control del usuario autenticado
+
 include "conexion.php"; // Conectar a la base de datos
 
 // Verificar si se han enviado el usuario y la contraseña
@@ -30,9 +32,9 @@ if (isset($_POST['id_usuario']) && isset($_POST['password'])) {
         exit();
     } else {
         // Enviar mensaje de error de autenticación
-        echo "Usuario o contraseña incorrectos";
+        echo "<script>document.getElementById('msgArea').innerText = 'Usuario o contraseña incorrectos';</script>";
     }
 } else {
-    echo "Por favor, complete todos los campos";
+    echo "<script>document.getElementById('msgArea').innerText = 'Por favor, complete todos los campos';</script>";
 }
 ?>

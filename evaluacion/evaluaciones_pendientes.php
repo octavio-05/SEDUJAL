@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -40,7 +41,7 @@
             <div class="options-navbar">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="../adminplace/">
+                        <a class="nav-link" href="./">
                             <i class="fas fa-home"></i> Inicio
                         </a>
                     </li>
@@ -60,9 +61,6 @@
                         <a class="nav-link" href="../usuarios/usuarios.php"><i class="fa fa-address-card"></i> Usuarios</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../evaluacion/formulario-asignacion.php"><i class="fa fa-archive"></i> Evaluación Docente</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="../helpers/cerrar_session.php"><i class="fas fa-sign-out-alt"></i> Cerrar Sesion</a>
                     </li>
                 </ul>
@@ -70,39 +68,68 @@
         </div>
     </nav>
 </header>
-<div class="container" id="mainContent">
-        <?php 
-           include ('content.php');
-        ?>
+<body>
+    
+
+<div id="evaluaciones-container" class="container mt-5">
+    <h2>Evaluaciones Disponibles</h2>
+    <div id="evaluaciones-list"></div>
 </div>
 
-<!-- Fin de modal -->
-
-
-
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-// Función para cargar contenido en el div #mainContent
-function loadContent(url) {
-    fetch(url)
-        .then(response => {
-            if (!response.ok) throw new Error('Error al cargar el contenido');
-            return response.text();
-        })
-        .then(data => {
-            document.getElementById('mainContent').innerHTML = data;
-        })
-        .catch(error => {
-            document.getElementById('mainContent').innerHTML = '<p>Error al cargar el contenido.</p>';
-            console.error('Error:', error);
-        });
-}
+$(document).ready(function() {
+    $.getJSON('obtener-evaluaciones.php', function(response) {
+        if (response.status === 'success') {
+            const evaluaciones = response.evaluaciones;
+            let html = '';
 
-// Configurar el evento del enlace "Docentes"
-document.getElementById("link-docentes").addEventListener("click", function(event) {
-    event.preventDefault(); // Evita que el enlace recargue la página
-    loadContent('../docentes/content.php');
+            if (evaluaciones.length > 0) {
+                evaluaciones.forEach(ev => {
+                    html += `
+                        <div class="evaluacion mb-4 p-3 border rounded">
+                            <h4>${ev.asignatura}</h4>
+                            <p>Inicio: ${ev.fecha_inicio}</p>
+                            <p>Fin: ${ev.fecha_fin}</p>
+                            <p>Estado: ${ev.estado}</p>
+                            ${
+                                ev.estado === 'Pendiente'
+                                    ? `<a href="formulario_evaluacion.php?id_evaluacion=${ev.id_evaluacion}" 
+                                         class="btn btn-primary">Realizar Evaluación</a>`
+                                    : `<button class="btn btn-secondary" disabled>Ya realizada</button>`
+                            }
+                        </div>
+                    `;
+                });
+            } else {
+                html = '<p>No tienes evaluaciones asignadas en este momento.</p>';
+            }
+
+            $('#evaluaciones-list').html(html);
+        } else {
+            alert(response.message);
+        }
+    });
 });
 </script>
 
+<!-- Fin de modal -->
+
+        <!-- Scripts -->
+        <script src="../helpers/jquery-3.7/jquery-3.7.1.min.js"></script>
+        <script src="../helpers/popper-2.11.8/popper.min.js"></script>
+        <script src="../helpers/moment-18.1/moment.min.js"></script>
+        <script src="../helpers/bootstrap-5.0.2-dist/js/bootstrap.bundle.js"></script>
+        <script src="//cdn.datatables.net/2.1.8/js/dataTables.min.js"></script>
+        <script src="../js/b4_sidebar.js"></script>
+
+
+<script>
+    
+</script>
 </body>
 </html>
+
+
+
+

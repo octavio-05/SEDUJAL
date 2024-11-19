@@ -81,8 +81,9 @@
                         render: function(data, type, row) {
                             return `
                                 <button class="btn btn-warning btn-sm" onclick="editarAlumno('${row.num_control}')">Editar</button>
-                                <button class="btn btn-danger btn-sm" onclick="eliminarAlumno('${row.num_control}')">Eliminar</button>
+                               
                             `;
+                            // <button class="btn btn-danger btn-sm" onclick="eliminarAlumno('${row.num_control}')">Eliminar</button>
                         }
                     }
                 ]
@@ -125,15 +126,15 @@
             }, 'json');
         }
 
-        function eliminarAlumno(num_control) {
-            console.log("ID a eliminar:", num_control); // Verifica que el id sea correcto
-            if (confirm('¿Estás seguro de que deseas eliminar este alumno?')) {
-                $.post('eliminar_alumno.php', { num_control: num_control }, function(response) {
-                    console.log("Respuesta de eliminación:", response); 
-                    tabla.ajax.reload();
-                });
-            }
-        }
+        // function eliminarAlumno(num_control) {
+        //     console.log("ID a eliminar:", num_control); // Verifica que el id sea correcto
+        //     if (confirm('¿Estás seguro de que deseas eliminar este alumno?')) {
+        //         $.post('eliminar_alumno.php', { num_control: num_control }, function(response) {
+        //             console.log("Respuesta de eliminación:", response); 
+        //             tabla.ajax.reload();
+        //         });
+        //     }
+        // }
        
     // Cargar opciones de carreras
     function cargarCarreras() {

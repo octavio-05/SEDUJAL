@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>CONTROL ESCOLAR UNIJAL</title>
+    <title>Asignación de evaluacion</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
     <link rel="stylesheet" href="../css/bootstrap.min.css">
@@ -70,39 +70,110 @@
         </div>
     </nav>
 </header>
-<div class="container" id="mainContent">
-        <?php 
-           include ('content.php');
-        ?>
-</div>
+
+
+
+<div class="container mt-5">
+        <h2 class="mb-4">Asignar Evaluación Docente</h2>
+        <form id="formAsignacion" class="border p-4 rounded shadow-sm bg-light">
+            <div class="mb-3">
+            <label for="id_asignatura" class="form-label">Selecciona una asignatura:</label>
+                <select name="id_asignatura" id="id_asignatura" class="form-control" required>
+
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="fecha_inicio" class="form-label">Fecha de inicio:</label>
+                <input type="date" id="fecha_inicio" name="fecha_inicio" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label for="fecha_fin" class="form-label">Fecha de fin:</label>
+                <input type="date" id="fecha_fin" name="fecha_fin" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Asignar Evaluación</button>
+        </form>
+    </div>
+    <p></p>
+    <div class="container mt-3">
+    <button onclick="location.href='evaluaciones_activas.php'" type="button" class="btn btn-success" >Ver evaluaciones</button>
+    </div>
+    <p></p>
+
 
 <!-- Fin de modal -->
+        <script src="../helpers/jquery-3.7/jquery-3.7.1.min.js"></script>
+        <script src="../helpers/popper-2.11.8/popper.min.js"></script>
+        <script src="../helpers/moment-18.1/moment.min.js"></script>
+        <script src="../helpers/bootstrap-5.0.2-dist/js/bootstrap.bundle.js"></script>
+        <script src="//cdn.datatables.net/2.1.8/js/dataTables.min.js"></script>
+        <script src="../js/b4_sidebar.js"></script>
+        
+    <script>
+    $(document).ready(function () {
+        $('#formAsignacion').on('submit', function (e) {
+        e.preventDefault();
 
+        // Validar campos antes de enviar
+        let id_asignatura = $('#id_asignatura').val();
+        let fecha_inicio = $('#fecha_inicio').val();
+        let fecha_fin = $('#fecha_fin').val();
 
+        if (!id_asignatura || !fecha_inicio || !fecha_fin) {
+            alert("Todos los campos son obligatorios.");
+            return;
+        }
 
-<script>
-// Función para cargar contenido en el div #mainContent
-function loadContent(url) {
-    fetch(url)
-        .then(response => {
-            if (!response.ok) throw new Error('Error al cargar el contenido');
-            return response.text();
-        })
-        .then(data => {
-            document.getElementById('mainContent').innerHTML = data;
-        })
-        .catch(error => {
-            document.getElementById('mainContent').innerHTML = '<p>Error al cargar el contenido.</p>';
-            console.error('Error:', error);
+        let url = 'asignar_evaluacion.php';
+        let datos = {
+            id_asignatura: id_asignatura,
+            fecha_inicio: fecha_inicio,
+            fecha_fin: fecha_fin,
+        };
+
+        console.log("Enviando datos:", datos);
+
+        $.post(url, datos, function (response) {
+            console.log("Respuesta del servidor:", response);
+
+            // Mostrar un mensaje y limpiar el formulario si la solicitud es exitosa
+            alert(response);
+            limpiarFormulario();
+        }).fail(function (xhr, status, error) {
+            console.error("Error en la solicitud:", error);
+            alert("Hubo un error al asignar la evaluación. Por favor, inténtalo nuevamente.");
         });
+    });
+});
+
+function limpiarFormulario() {
+    $('#formAsignacion')[0].reset();
 }
 
-// Configurar el evento del enlace "Docentes"
-document.getElementById("link-docentes").addEventListener("click", function(event) {
-    event.preventDefault(); // Evita que el enlace recargue la página
-    loadContent('../docentes/content.php');
-});
-</script>
-
+    function cargarAsignaturas() {
+    $.ajax({
+        url: 'obtener-asignaturas.php', 
+        method: 'GET',
+        dataType: 'json',
+        success: function(data) {
+            let selectAsignaturas = $('#id_asignatura');
+            selectAsignaturas.empty(); // Limpiar opciones anteriores
+            data.forEach(function(asignaturas) {
+                selectAsignaturas.append(`<option value="${asignaturas.id_asignatura}">${asignaturas.nombre}</option>`);
+            });
+        },
+        error: function(xhr, status, error) {
+            console.error("Error al obtener las carreras:", error);
+        }
+    });
+}
+cargarAsignaturas();
+    </script>
 </body>
 </html>
+
+
+
+
+
+
+

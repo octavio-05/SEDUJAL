@@ -21,7 +21,7 @@
                         <img class="login-logo" src="images/logo-vertical.jpg"/>
                     </p>
 
-                    <form role="form" name="frm" id="frm" method="POST" action="login.php">
+                    <form role="form" name="frm" id="frm" method="POST" action="index.php">
                         <div class="form-group">
                             <label for="id_usuario">Usuario</label>
                             <input type="text" class="form-control" id="id_usuario" name="id_usuario" required>
@@ -42,6 +42,8 @@
 </div>
 <?php
 session_start();
+$_SESSION['id_usuario'] = $id_usuario; // Aquí `$id_usuario` es el número de control del usuario autenticado
+
 include "conexion.php"; // Conectar a la base de datos
 
 // Verificar si se han enviado el usuario y la contraseña
@@ -83,7 +85,6 @@ if (isset($_POST['id_usuario']) && isset($_POST['password'])) {
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
-    <!-- <script src="auth_login.php"></script>     -->
     </body>
 </html>
 

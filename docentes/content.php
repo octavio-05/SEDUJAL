@@ -62,7 +62,6 @@
                     render: function(data, type, row) {
                         return `
                             <button class="btn btn-warning btn-sm" onclick="editarDocente('${row.id_docente}')">Editar</button>
-                            <button class="btn btn-danger btn-sm" onclick="eliminarDocente('${row.id_docente}')">Eliminar</button>
                         `;
                     }
                 }
@@ -111,23 +110,5 @@
         }
     }
 
-    // // Cargar opciones de docentes (si es necesario)
-    // function cargarDocentes() {
-    //     $.ajax({
-    //         url: 'obtener_docentes.php',
-    //         method: 'GET',
-    //         dataType: 'json',
-    //         success: function(data) {
-    //             let selectDocentes = $('#id_docente');
-    //             selectDocentes.empty(); // Limpiar opciones anteriores
-    //             data.forEach(function(docente) {
-    //                 selectDocentes.append(`<option value="${docente.id_docente}">${docente.nombre}</option>`);
-    //             });
-    //         },
-    //         error: function(xhr, status, error) {
-    //             console.error("Error al obtener los docentes:", error);
-    //         }
-    //     });
-    // }
-    // cargarDocentes();
+
 </script>

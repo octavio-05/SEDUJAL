@@ -70,7 +70,6 @@
                         render: function(data, type, row) {
                             return `
                                 <button class="btn btn-warning btn-sm" onclick="editarCarrera('${row.id_carrera}')">Editar</button>
-                                <button class="btn btn-danger btn-sm" onclick="eliminarCarrera('${row.id_carrera}')">Eliminar</button>
                             `;
                         }
                     }
