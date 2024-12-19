@@ -1,3 +1,12 @@
+<?php
+include "../session_check.php";
+
+// Verificar que sea un administrador
+if ($_SESSION['rol'] != 'admin') {
+    header("Location: ../login.php");
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html>
     <head>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><module codename="org.netbeans.modules.java.platform.ui/1">
+    <module_version install_time="1727786707929" last="true" origin="installer" specification_version="1.67">
+        <file crc="175784056" name="config/Modules/org-netbeans-modules-java-platform-ui.xml"/>
+        <file crc="2786295434" name="modules/org-netbeans-modules-java-platform-ui.jar"/>
+    </module_version>
+</module>

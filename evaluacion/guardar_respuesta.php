@@ -46,7 +46,9 @@ $stmt->bindValue($index, $comentario, PDO::PARAM_STR);
 // Ejecutar la consulta
 try {
     if ($stmt->execute()) {
-        echo "Respuestas guardadas correctamente.";
+        // Redirigir a la página de evaluaciones activas
+        header("Location: evaluaciones_activas.php");
+        exit; // Asegurar que el script se detiene después de la redirección
     } else {
         echo "Error al guardar respuestas.";
     }

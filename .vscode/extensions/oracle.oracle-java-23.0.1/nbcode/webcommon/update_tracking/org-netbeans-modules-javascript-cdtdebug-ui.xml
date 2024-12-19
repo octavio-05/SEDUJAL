@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><module codename="org.netbeans.modules.javascript.cdtdebug.ui/1">
+    <module_version install_time="1732605787823" last="true" origin="installer" specification_version="1.1.0.1">
+        <file crc="2578874117" name="config/Modules/org-netbeans-modules-javascript-cdtdebug-ui.xml"/>
+        <file crc="3319198505" name="modules/org-netbeans-modules-javascript-cdtdebug-ui.jar"/>
+    </module_version>
+</module>

@@ -1,4 +1,13 @@
-<!DOCTYPE html>
+
+<?php
+include "../session_check.php";
+
+// Verificar que sea un administrador
+if ($_SESSION['rol'] != 'admin') {
+    header("Location: ../login.php");
+    exit();
+}
+?><!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">

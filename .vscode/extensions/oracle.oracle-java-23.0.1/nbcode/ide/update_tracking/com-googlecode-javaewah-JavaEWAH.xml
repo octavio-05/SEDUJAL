@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><module codename="com.googlecode.javaewah.JavaEWAH">
+    <module_version install_time="1732605707181" last="true" origin="installer" specification_version="1.2.3">
+        <file crc="3784984680" name="config/Modules/com-googlecode-javaewah-JavaEWAH.xml"/>
+        <file crc="2735389620" name="modules/com-googlecode-javaewah-JavaEWAH.jar"/>
+    </module_version>
+</module>

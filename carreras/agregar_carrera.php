@@ -2,18 +2,14 @@
 include "../conexion.php"; // Conectar a la base de datos
 
 // Verificar si todos los datos necesarios han sido enviados
-if (isset($_POST['id_carrera']) && isset($_POST['nombre']) ) {
+if (isset($_POST['nombre'])) {
     // Obtener los datos enviados
-    $id_carrera = $_POST['id_carrera'];
     $nombre = $_POST['nombre'];
 
-
     // Preparar y ejecutar la consulta de inserción
-    $sql = "INSERT INTO carreras (id_carrera, nombre) VALUES (:id_carrera, :nombre)";
+    $sql = "INSERT INTO carreras (nombre) VALUES (:nombre)";
     $stmt = $conexion->prepare($sql);
-    $stmt->bindParam(':id_carrera', $id_carrera);
     $stmt->bindParam(':nombre', $nombre);
-
 
     // Ejecutar la consulta y verificar si fue exitosa
     if ($stmt->execute()) {

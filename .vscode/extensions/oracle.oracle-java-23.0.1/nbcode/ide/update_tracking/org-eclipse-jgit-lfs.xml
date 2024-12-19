@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><module codename="org.eclipse.jgit.lfs">
+    <module_version install_time="1732605753194" last="true" origin="installer" specification_version="6.10.0.202406032230-r">
+        <file crc="3995170935" name="config/Modules/org-eclipse-jgit-lfs.xml"/>
+        <file crc="584127652" name="modules/org-eclipse-jgit-lfs.jar"/>
+    </module_version>
+</module>

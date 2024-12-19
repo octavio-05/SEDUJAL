@@ -1,0 +1,128 @@
+{
+	"name": "terminal",
+	"displayName": "Terminal",
+	"description": "Terminal for Visual Studio Code",
+	"version": "0.0.10",
+	"publisher": "formulahendry",
+	"icon": "images/logo.png",
+	"engines": {
+		"vscode": "^1.6.0"
+	},
+	"categories": [
+		"Other",
+		"Languages"
+	],
+	"keywords": [
+		"Terminal",
+		"Shell",
+		"Bash",
+		"CMD",
+		"powershell"
+	],
+	"bugs": {
+		"url": "https://github.com/formulahendry/vscode-terminal/issues",
+		"email": "formulahendry@gmail.com"
+	},
+	"homepage": "https://github.com/formulahendry/vscode-terminal/blob/master/README.md",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/formulahendry/vscode-terminal.git"
+	},
+	"activationEvents": [
+		"*",
+		"onCommand:terminal.run",
+		"onCommand:terminal.open",
+		"onCommand:terminal.toggle"
+	],
+	"main": "./out/src/extension",
+	"contributes": {
+		"commands": [
+			{
+				"command": "terminal.run",
+				"title": "Run Terminal Command"
+			},
+			{
+				"command": "terminal.stop",
+				"title": "Stop Terminal Command"
+			},
+			{
+				"command": "terminal.open",
+				"title": "Open in Integrated Terminal"
+			},
+			{
+				"command": "terminal.toggle",
+				"title": "Toggle Integrated Terminal"
+			}
+		],
+		"keybindings": [
+			{
+				"command": "terminal.run",
+				"key": "ctrl+alt+r"
+			},
+			{
+				"command": "terminal.stop",
+				"key": "ctrl+alt+c"
+			},
+			{
+				"command": "terminal.open",
+				"key": "ctrl+alt+o"
+			},
+			{
+				"command": "terminal.toggle",
+				"key": "ctrl+alt+t"
+			}
+		],
+		"menus": {
+			"editor/context": [
+				{
+					"when": "!inOutput",
+					"command": "terminal.open",
+					"group": "navigation@1"
+				}
+			],
+			"explorer/context": [
+				{
+					"command": "terminal.open",
+					"group": "navigation@1"
+				}
+			]
+		},
+		"configuration": {
+			"type": "object",
+			"title": "Terminal configuration",
+			"properties": {
+				"terminal.enableAppInsights": {
+					"type": "boolean",
+					"default": true,
+					"description": "Whether to enable AppInsights to track user telemetry data."
+				}
+			}
+		}
+	},
+	"scripts": {
+		"vscode:prepublish": "node ./node_modules/vscode/bin/compile",
+		"compile": "node ./node_modules/vscode/bin/compile -watch -p ./",
+		"postinstall": "node ./node_modules/vscode/bin/install"
+	},
+	"dependencies": {
+		"applicationinsights": "^0.17.1",
+		"tree-kill": "^1.1.0"
+	},
+	"devDependencies": {
+		"typescript": "^1.8.5",
+		"vscode": "^0.11.0"
+	},
+	"__metadata": {
+		"id": "186ace18-2b44-490d-863e-0bd29b229a27",
+		"publisherId": "38bbe3f0-5204-4170-845e-c2f966d979b8",
+		"publisherDisplayName": "Jun Han",
+		"targetPlatform": "undefined",
+		"isApplicationScoped": false,
+		"isPreReleaseVersion": false,
+		"hasPreReleaseVersion": false,
+		"installedTimestamp": 1724200184292,
+		"pinned": false,
+		"preRelease": false,
+		"source": "gallery"
+	}
+}

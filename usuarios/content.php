@@ -80,7 +80,10 @@
                             `;
                         }
                     }
-                ]
+                ],
+                language: {
+            url: "../js/datatable-es.json" // Ruta a tu archivo de traducción
+        }
             });
 
             $('#formAlumno').on('submit', function(e) {

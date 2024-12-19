@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?><module codename="org.netbeans.libs.truffleapi">
+    <module_version install_time="1732605747870" last="true" origin="installer" specification_version="1.26">
+        <file crc="1510467501" name="config/Modules/org-netbeans-libs-truffleapi.xml"/>
+        <file crc="592277735" name="modules/ext/truffle-api-24.0.0.jar"/>
+        <file crc="231146436" name="modules/ext/truffle-compiler-24.0.0.jar"/>
+        <file crc="2919134175" name="modules/ext/truffle-runtime-24.0.0.jar"/>
+        <file crc="181261323" name="modules/org-netbeans-libs-truffleapi.jar"/>
+    </module_version>
+</module>

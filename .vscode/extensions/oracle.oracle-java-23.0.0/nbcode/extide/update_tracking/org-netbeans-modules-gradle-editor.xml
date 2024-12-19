@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><module codename="org.netbeans.modules.gradle.editor">
+    <module_version install_time="1727786675364" last="true" origin="installer" specification_version="1.7">
+        <file crc="933198312" name="config/Modules/org-netbeans-modules-gradle-editor.xml"/>
+        <file crc="2257033314" name="modules/org-netbeans-modules-gradle-editor.jar"/>
+    </module_version>
+</module>

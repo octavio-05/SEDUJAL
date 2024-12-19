@@ -1,3 +1,13 @@
+<?php
+include "../session_check.php";
+
+// Verificar que sea un administrador
+if ($_SESSION['rol'] != 'admin') {
+    header("Location: ../index.php");
+    exit();
+}
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -78,31 +88,6 @@
 
 <!-- Fin de modal -->
 
-
-
-<script>
-// Función para cargar contenido en el div #mainContent
-function loadContent(url) {
-    fetch(url)
-        .then(response => {
-            if (!response.ok) throw new Error('Error al cargar el contenido');
-            return response.text();
-        })
-        .then(data => {
-            document.getElementById('mainContent').innerHTML = data;
-        })
-        .catch(error => {
-            document.getElementById('mainContent').innerHTML = '<p>Error al cargar el contenido.</p>';
-            console.error('Error:', error);
-        });
-}
-
-// Configurar el evento del enlace "Docentes"
-document.getElementById("link-docentes").addEventListener("click", function(event) {
-    event.preventDefault(); // Evita que el enlace recargue la página
-    loadContent('../docentes/content.php');
-});
-</script>
 
 </body>
 </html>

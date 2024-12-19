@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><module codename="org.netbeans.api.dashboard/0">
+    <module_version install_time="1727786561074" last="true" origin="installer" specification_version="0.2">
+        <file crc="4223443400" name="config/Modules/org-netbeans-api-dashboard.xml"/>
+        <file crc="1707398314" name="modules/org-netbeans-api-dashboard.jar"/>
+    </module_version>
+</module>

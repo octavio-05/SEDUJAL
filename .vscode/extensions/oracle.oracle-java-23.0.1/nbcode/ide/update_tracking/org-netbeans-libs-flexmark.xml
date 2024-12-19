@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?><module codename="org.netbeans.libs.flexmark">
+    <module_version install_time="1732605746649" last="true" origin="installer" specification_version="1.18">
+        <file crc="3213768697" name="config/Modules/org-netbeans-libs-flexmark.xml"/>
+        <file crc="4147696747" name="modules/ext/flexmark-0.64.8.jar"/>
+        <file crc="358210538" name="modules/ext/flexmark-ext-anchorlink-0.64.8.jar"/>
+        <file crc="3153210589" name="modules/ext/flexmark-ext-emoji-0.64.8.jar"/>
+        <file crc="3362959090" name="modules/ext/flexmark-ext-gfm-tasklist-0.64.8.jar"/>
+        <file crc="2046844751" name="modules/ext/flexmark-ext-tables-0.64.8.jar"/>
+        <file crc="333106713" name="modules/ext/flexmark-html2md-converter-0.64.8.jar"/>
+        <file crc="3622573227" name="modules/ext/flexmark-util-ast-0.64.8.jar"/>
+        <file crc="1095137323" name="modules/ext/flexmark-util-builder-0.64.8.jar"/>
+        <file crc="3414229531" name="modules/ext/flexmark-util-collection-0.64.8.jar"/>
+        <file crc="2004283815" name="modules/ext/flexmark-util-data-0.64.8.jar"/>
+        <file crc="2068129472" name="modules/ext/flexmark-util-dependency-0.64.8.jar"/>
+        <file crc="1319346737" name="modules/ext/flexmark-util-format-0.64.8.jar"/>
+        <file crc="1437246872" name="modules/ext/flexmark-util-html-0.64.8.jar"/>
+        <file crc="1870650394" name="modules/ext/flexmark-util-misc-0.64.8.jar"/>
+        <file crc="4233825047" name="modules/ext/flexmark-util-sequence-0.64.8.jar"/>
+        <file crc="1257671245" name="modules/ext/flexmark-util-visitor-0.64.8.jar"/>
+        <file crc="461783358" name="modules/ext/jsoup-1.15.4.jar"/>
+        <file crc="3336042729" name="modules/org-netbeans-libs-flexmark.jar"/>
+    </module_version>
+</module>

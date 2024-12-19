@@ -1,3 +1,12 @@
+<?php
+include "../session_check.php";
+
+// Verificar que sea un administrador
+if ($_SESSION['rol'] != 'admin') {
+    header("Location: ../login.php");
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -74,100 +83,104 @@
 
 
 <div class="container mt-5">
-        <h2 class="mb-4">Asignar Evaluación Docente</h2>
-        <form id="formAsignacion" class="border p-4 rounded shadow-sm bg-light">
-            <div class="mb-3">
+    <h2 class="mb-4">Asignar Evaluación Docente</h2>
+    <form id="formAsignacion" class="border p-4 rounded shadow-sm bg-light">
+        <div class="mb-3">
             <label for="id_asignatura" class="form-label">Selecciona una asignatura:</label>
-                <select name="id_asignatura" id="id_asignatura" class="form-control" required>
-
-                </select>
-            </div>
-            <div class="mb-3">
-                <label for="fecha_inicio" class="form-label">Fecha de inicio:</label>
-                <input type="date" id="fecha_inicio" name="fecha_inicio" class="form-control" required>
-            </div>
-            <div class="mb-3">
-                <label for="fecha_fin" class="form-label">Fecha de fin:</label>
-                <input type="date" id="fecha_fin" name="fecha_fin" class="form-control" required>
-            </div>
-            <button type="submit" class="btn btn-primary">Asignar Evaluación</button>
-        </form>
-    </div>
-    <p></p>
-    <div class="container mt-3">
-    <button onclick="location.href='evaluaciones_activas.php'" type="button" class="btn btn-success" >Ver evaluaciones</button>
-    </div>
-    <p></p>
-
+            <select name="id_asignatura" id="id_asignatura" class="form-control" required>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="fecha_inicio" class="form-label">Fecha de inicio:</label>
+            <input type="date" id="fecha_inicio" name="fecha_inicio" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label for="fecha_fin" class="form-label">Fecha de fin:</label>
+            <input type="date" id="fecha_fin" name="fecha_fin" class="form-control" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Asignar Evaluación</button>
+    </form>
+</div>
+<p></p>
+<div class="container mt-3">
+    <button onclick="location.href='evaluacion_resultados.php'" type="button" class="btn btn-success">Ver resultados</button>
+</div>
+<p></p>
 
 <!-- Fin de modal -->
-        <script src="../helpers/jquery-3.7/jquery-3.7.1.min.js"></script>
-        <script src="../helpers/popper-2.11.8/popper.min.js"></script>
-        <script src="../helpers/moment-18.1/moment.min.js"></script>
-        <script src="../helpers/bootstrap-5.0.2-dist/js/bootstrap.bundle.js"></script>
-        <script src="//cdn.datatables.net/2.1.8/js/dataTables.min.js"></script>
-        <script src="../js/b4_sidebar.js"></script>
-        
-    <script>
+<script src="../helpers/jquery-3.7/jquery-3.7.1.min.js"></script>
+<script src="../helpers/popper-2.11.8/popper.min.js"></script>
+<script src="../helpers/moment-18.1/moment.min.js"></script>
+<script src="../helpers/bootstrap-5.0.2-dist/js/bootstrap.bundle.js"></script>
+<script src="//cdn.datatables.net/2.1.8/js/dataTables.min.js"></script>
+<script src="../js/b4_sidebar.js"></script>
+
+<script>
     $(document).ready(function () {
+        // Establecer el valor mínimo en los campos de fecha
+        const today = new Date().toISOString().split("T")[0];
+        $("#fecha_inicio").attr("min", today);
+        $("#fecha_fin").attr("min", today);
+
         $('#formAsignacion').on('submit', function (e) {
-        e.preventDefault();
+            e.preventDefault();
 
-        // Validar campos antes de enviar
-        let id_asignatura = $('#id_asignatura').val();
-        let fecha_inicio = $('#fecha_inicio').val();
-        let fecha_fin = $('#fecha_fin').val();
+            // Validar campos antes de enviar
+            let id_asignatura = $('#id_asignatura').val();
+            let fecha_inicio = $('#fecha_inicio').val();
+            let fecha_fin = $('#fecha_fin').val();
 
-        if (!id_asignatura || !fecha_inicio || !fecha_fin) {
-            alert("Todos los campos son obligatorios.");
-            return;
-        }
+            if (!id_asignatura || !fecha_inicio || !fecha_fin) {
+                alert("Todos los campos son obligatorios.");
+                return;
+            }
 
-        let url = 'asignar_evaluacion.php';
-        let datos = {
-            id_asignatura: id_asignatura,
-            fecha_inicio: fecha_inicio,
-            fecha_fin: fecha_fin,
-        };
+            let url = 'asignar_evaluacion.php';
+            let datos = {
+                id_asignatura: id_asignatura,
+                fecha_inicio: fecha_inicio,
+                fecha_fin: fecha_fin,
+            };
 
-        console.log("Enviando datos:", datos);
+            console.log("Enviando datos:", datos);
 
-        $.post(url, datos, function (response) {
-            console.log("Respuesta del servidor:", response);
+            $.post(url, datos, function (response) {
+                console.log("Respuesta del servidor:", response);
 
-            // Mostrar un mensaje y limpiar el formulario si la solicitud es exitosa
-            alert(response);
-            limpiarFormulario();
-        }).fail(function (xhr, status, error) {
-            console.error("Error en la solicitud:", error);
-            alert("Hubo un error al asignar la evaluación. Por favor, inténtalo nuevamente.");
-        });
-    });
-});
-
-function limpiarFormulario() {
-    $('#formAsignacion')[0].reset();
-}
-
-    function cargarAsignaturas() {
-    $.ajax({
-        url: 'obtener-asignaturas.php', 
-        method: 'GET',
-        dataType: 'json',
-        success: function(data) {
-            let selectAsignaturas = $('#id_asignatura');
-            selectAsignaturas.empty(); // Limpiar opciones anteriores
-            data.forEach(function(asignaturas) {
-                selectAsignaturas.append(`<option value="${asignaturas.id_asignatura}">${asignaturas.nombre}</option>`);
+                // Mostrar un mensaje y limpiar el formulario si la solicitud es exitosa
+                alert(response);
+                limpiarFormulario();
+            }).fail(function (xhr, status, error) {
+                console.error("Error en la solicitud:", error);
+                alert("Hubo un error al asignar la evaluación. Por favor, inténtalo nuevamente.");
             });
-        },
-        error: function(xhr, status, error) {
-            console.error("Error al obtener las carreras:", error);
+        });
+
+        function limpiarFormulario() {
+            $('#formAsignacion')[0].reset();
         }
+
+        function cargarAsignaturas() {
+            $.ajax({
+                url: 'obtener-asignaturas.php',
+                method: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                    let selectAsignaturas = $('#id_asignatura');
+                    selectAsignaturas.empty(); // Limpiar opciones anteriores
+                    data.forEach(function (asignaturas) {
+                        selectAsignaturas.append(`<option value="${asignaturas.id_asignatura}">${asignaturas.nombre}</option>`);
+                    });
+                },
+                error: function (xhr, status, error) {
+                    console.error("Error al obtener las carreras:", error);
+                }
+            });
+        }
+        cargarAsignaturas();
     });
-}
-cargarAsignaturas();
-    </script>
+</script>
+
 </body>
 </html>
 

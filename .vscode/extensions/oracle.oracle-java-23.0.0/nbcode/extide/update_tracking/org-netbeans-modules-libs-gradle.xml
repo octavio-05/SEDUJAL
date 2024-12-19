@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?><module codename="org.netbeans.modules.libs.gradle/8">
+    <module_version install_time="1727786675452" last="true" origin="installer" specification_version="8.9">
+        <file crc="200781294" name="config/Modules/org-netbeans-modules-libs-gradle.xml"/>
+        <file crc="1721945452" name="modules/gradle/gradle-tooling-api.jar"/>
+        <file crc="1293039044" name="modules/org-netbeans-modules-libs-gradle.jar"/>
+    </module_version>
+</module>

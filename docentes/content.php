@@ -5,7 +5,7 @@
     <table id="tablaDocente" class="table table-striped" style="width:100%">
         <thead>
             <tr>
-                <th>ID Docente</th>
+                <!-- <th>ID Docente</th> -->
                 <th>Nombre</th>
                 <th>Acciones</th>
             </tr>
@@ -22,13 +22,10 @@
             </div>
             <div class="modal-body">
                 <form id="FormDocente">
-                    <div class="mb-3">
-                        <label for="id_docente" class="form-label">ID Docente</label>
-                        <input type="number" class="form-control" id="id_docente" required>
-                    </div>
+                    <!-- Campo eliminado para id_docente -->
                     <div class="mb-3">
                         <label for="nombre" class="form-label">Nombre Del Docente</label>
-                        <input type="text" class="form-control" id="nombre" required>
+                        <input type="text" class="form-control" id="nombre" pattern="^[a-zA-Z\s]+$" required>
                     </div>
                     <button type="submit" class="btn btn-primary">Guardar</button>
                 </form>
@@ -36,6 +33,7 @@
         </div>
     </div>
 </div>
+
 
 <!-- Scripts -->
 <script src="../helpers/jquery-3.7/jquery-3.7.1.min.js"></script>
@@ -47,53 +45,62 @@
 <script>
     let tabla;
     let modoEdicion = false;
+    let idDocenteEdicion = null; // Variable para almacenar el id_docente en modo edición
 
     $(document).ready(function() {
         tabla = $('#tablaDocente').DataTable({
             ajax: {
-                url: 'json-docentes.php', // Cambié a json-docentes.php
+                url: 'json-docentes.php',
                 dataSrc: ''
             },
             columns: [
-                { "data": "id_docente" },
+                // { "data": "id_docente" },
                 { "data": "nombre" },
                 {
                     data: null,
                     render: function(data, type, row) {
                         return `
-                            <button class="btn btn-warning btn-sm" onclick="editarDocente('${row.id_docente}')">Editar</button>
+                            <button class="btn btn-warning btn-sm" onclick="editarDocente(${row.id_docente})">Editar</button>
                         `;
                     }
                 }
-            ]
+            ],
+            language: {
+                url: "../js/datatable-es.json" // Ruta a tu archivo de traducción
+            }
         });
 
         $('#FormDocente').on('submit', function(e) {
             e.preventDefault();
-            let id_docente = $('#id_docente').val();
             let url = modoEdicion ? 'actualizar_docente.php' : 'agregar_docente.php';
             let datos = {
-                id_docente: id_docente,
                 nombre: $('#nombre').val()
             };
+
+            // Si está en modo edición, agregar id_docente a los datos
+            if (modoEdicion) {
+                datos.id_docente = idDocenteEdicion;
+            }
+
             console.log("Enviando datos:", datos);
             $.post(url, datos, function(response) {
-                console.log("Respuesta del servidor al agregar:", response);
+                console.log("Respuesta del servidor:", response);
                 $('#docenteModal').modal('hide');
                 tabla.ajax.reload();
+                limpiarFormulario();
             });
         });
     });
 
     function limpiarFormulario() {
         $('#FormDocente')[0].reset();
-        $('#id_docente').val('');
+        idDocenteEdicion = null;
         modoEdicion = false;
     }
 
     function editarDocente(id_docente) {
         $.get('obtener_docente.php', { id_docente: id_docente }, function(data) {
-            $('#id_docente').val(data.id_docente);
+            idDocenteEdicion = data.id_docente; // Guardar el ID para la edición
             $('#nombre').val(data.nombre);
             $('#docenteModal').modal('show');
             modoEdicion = true;
@@ -104,11 +111,9 @@
         console.log("ID a eliminar:", id_docente);
         if (confirm('¿Estás seguro de que deseas eliminar este docente?')) {
             $.post('eliminar_docente.php', { id_docente: id_docente }, function(response) {
-                console.log("Respuesta de eliminación:", response); 
+                console.log("Respuesta de eliminación:", response);
                 tabla.ajax.reload();
             });
         }
     }
-
-
 </script>

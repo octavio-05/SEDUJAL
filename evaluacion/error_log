@@ -1,0 +1,35 @@
+[27-Nov-2024 23:49:46 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '0' for key 'PRIMARY' in /home/unijaled/public_html/sedujal/evaluacion/asignar_evaluacion.php:27
+Stack trace:
+#0 /home/unijaled/public_html/sedujal/evaluacion/asignar_evaluacion.php(27): PDOStatement->execute()
+#1 {main}
+  thrown in /home/unijaled/public_html/sedujal/evaluacion/asignar_evaluacion.php on line 27
+[27-Nov-2024 23:49:53 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '0' for key 'PRIMARY' in /home/unijaled/public_html/sedujal/evaluacion/asignar_evaluacion.php:27
+Stack trace:
+#0 /home/unijaled/public_html/sedujal/evaluacion/asignar_evaluacion.php(27): PDOStatement->execute()
+#1 {main}
+  thrown in /home/unijaled/public_html/sedujal/evaluacion/asignar_evaluacion.php on line 27
+[28-Nov-2024 00:38:50 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '0' for key 'PRIMARY' in /home/unijaled/public_html/sedujal/evaluacion/asignar_evaluacion.php:27
+Stack trace:
+#0 /home/unijaled/public_html/sedujal/evaluacion/asignar_evaluacion.php(27): PDOStatement->execute()
+#1 {main}
+  thrown in /home/unijaled/public_html/sedujal/evaluacion/asignar_evaluacion.php on line 27
+[28-Nov-2024 00:38:54 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '0' for key 'PRIMARY' in /home/unijaled/public_html/sedujal/evaluacion/asignar_evaluacion.php:27
+Stack trace:
+#0 /home/unijaled/public_html/sedujal/evaluacion/asignar_evaluacion.php(27): PDOStatement->execute()
+#1 {main}
+  thrown in /home/unijaled/public_html/sedujal/evaluacion/asignar_evaluacion.php on line 27
+[28-Nov-2024 00:39:51 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '0' for key 'PRIMARY' in /home/unijaled/public_html/sedujal/evaluacion/asignar_evaluacion.php:27
+Stack trace:
+#0 /home/unijaled/public_html/sedujal/evaluacion/asignar_evaluacion.php(27): PDOStatement->execute()
+#1 {main}
+  thrown in /home/unijaled/public_html/sedujal/evaluacion/asignar_evaluacion.php on line 27
+[28-Nov-2024 00:40:26 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '0' for key 'PRIMARY' in /home/unijaled/public_html/sedujal/evaluacion/asignar_evaluacion.php:27
+Stack trace:
+#0 /home/unijaled/public_html/sedujal/evaluacion/asignar_evaluacion.php(27): PDOStatement->execute()
+#1 {main}
+  thrown in /home/unijaled/public_html/sedujal/evaluacion/asignar_evaluacion.php on line 27
+[28-Nov-2024 00:40:56 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '0' for key 'PRIMARY' in /home/unijaled/public_html/sedujal/evaluacion/asignar_evaluacion.php:27
+Stack trace:
+#0 /home/unijaled/public_html/sedujal/evaluacion/asignar_evaluacion.php(27): PDOStatement->execute()
+#1 {main}
+  thrown in /home/unijaled/public_html/sedujal/evaluacion/asignar_evaluacion.php on line 27

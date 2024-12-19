@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?><module codename="org.netbeans.modules.nbcode.integration">
+    <module_version install_time="1732606047323" last="true" origin="installer" specification_version="1.0">
+        <file crc="332560220" name="config/Editors/text/x-java/Preferences/org-netbeans-modules-editor-settings-CustomPreferences.xml"/>
+        <file crc="3260776030" name="config/Modules/org-netbeans-modules-nbcode-integration.xml"/>
+        <file crc="378987177" name="config/Preferences/org/netbeans/modules/java/hints/default/org.netbeans.modules.java.hints.StaticImport.properties"/>
+        <file crc="1699037743" name="config/Preferences/org/netbeans/modules/java/hints/default/org.netbeans.modules.java.hints.errors.ErrorFixesFakeHintSURROUND_WITH_TRY_CATCH.properties"/>
+        <file crc="592082240" name="config/Preferences/org/netbeans/modules/java/hints/default/org.netbeans.modules.java.hints.jdk.ConvertTextBlockToString.properties"/>
+        <file crc="1448387754" name="modules/org-netbeans-modules-nbcode-integration.jar"/>
+    </module_version>
+</module>

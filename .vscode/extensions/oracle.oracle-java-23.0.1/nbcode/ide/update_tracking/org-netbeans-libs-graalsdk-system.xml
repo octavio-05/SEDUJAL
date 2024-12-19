@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><module codename="org.netbeans.libs.graalsdk.system">
+    <module_version install_time="1732605747175" last="true" origin="installer" specification_version="1.25">
+        <file crc="487226328" name="config/Modules/org-netbeans-libs-graalsdk-system.xml"/>
+        <file crc="2254349146" name="modules/org-netbeans-libs-graalsdk-system.jar"/>
+    </module_version>
+</module>

@@ -25,13 +25,13 @@ include "../conexion.php"; // Conectar a la base de datos
 
     // Ejecutar la consulta y verificar si fue exitosa
     if ($stmt->execute()) {
-        echo json_encode(["status" => "success", "message" => "Evaluacion Docente asignada exitosamente"]);
+        echo "Evaluación Docente asignada correctamente";
     } else {
         error_log("Error al ejecutar la consulta de inserción: " . implode(":", $stmt->errorInfo()));
-        echo json_encode(["status" => "error", "message" => "Error al asignar evaluacion"]);
+        echo "Error al asignar la evaluación";
     }
-} else {
-    error_log("Datos incompletos: " . json_encode($_POST));
-    echo json_encode(["status" => "error", "message" => "Datos incompletos"]);
-}
-?>
+    } else {
+        error_log("Datos incompletos: " . json_encode($_POST));
+        echo "Datos incompletos";
+    }
+    ?>

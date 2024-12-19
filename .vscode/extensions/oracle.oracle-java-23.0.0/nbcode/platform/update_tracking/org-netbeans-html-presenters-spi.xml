@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><module codename="org.netbeans.html.presenters.spi">
+    <module_version install_time="1727786578844" last="true" origin="installer" specification_version="1.8.1">
+        <file crc="3174480928" name="config/Modules/org-netbeans-html-presenters-spi.xml"/>
+        <file crc="3629259840" name="modules/org-netbeans-html-presenters-spi.jar"/>
+    </module_version>
+</module>

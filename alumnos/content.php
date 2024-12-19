@@ -30,7 +30,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="nombre" class="form-label">Nombre</label>
-                            <input type="text" class="form-control" id="nombre" required>
+                            <input type="text" class="form-control" id="nombre" pattern="^[a-zA-Z\s]+$" required>
                         </div>
                         <div class="mb-3">
                             <label for="id_carrera" class="form-label">Carrera</label>
@@ -64,30 +64,33 @@
 
     <script>
        let tabla;
-        let modoEdicion = false;
-        $(document).ready(function() {
-            tabla = $('#tablaAlumnos').DataTable({
-                ajax: {
-                    url: 'json-alumno.php',
-                    dataSrc: ''
-                },
-                columns: [
-                    { "data": "num_control" },
-                    { "data": "nombre" },
-                    { "data": "nombre_carrera" },
-                    { "data": "fecha_inscripcion" },
-                    {
-                        data: null,
-                        render: function(data, type, row) {
-                            return `
-                                <button class="btn btn-warning btn-sm" onclick="editarAlumno('${row.num_control}')">Editar</button>
-                               
-                            `;
-                            // <button class="btn btn-danger btn-sm" onclick="eliminarAlumno('${row.num_control}')">Eliminar</button>
-                        }
-                    }
-                ]
-            });
+let modoEdicion = false;
+$(document).ready(function() {
+    tabla = $('#tablaAlumnos').DataTable({
+        ajax: {
+            url: 'json-alumno.php',
+            dataSrc: ''
+        },
+        columns: [
+            { "data": "num_control" },
+            { "data": "nombre" },
+            { "data": "nombre_carrera" },
+            { "data": "fecha_inscripcion" },
+            {
+                data: null,
+                render: function(data, type, row) {
+                    return `
+                        <button class="btn btn-warning btn-sm" onclick="editarAlumno('${row.num_control}')">Editar</button>
+                    `;
+                    // <button class="btn btn-danger btn-sm" onclick="eliminarAlumno('${row.num_control}')">Eliminar</button>
+                }
+            }
+        ],
+        language: {
+            url: "../js/datatable-es.json" // Ruta a tu archivo de traducción
+        }
+    });
+
 
             $('#formAlumno').on('submit', function(e) {
                 e.preventDefault();
@@ -155,5 +158,6 @@
     });
 }
 cargarCarreras();
+
 
     </script>

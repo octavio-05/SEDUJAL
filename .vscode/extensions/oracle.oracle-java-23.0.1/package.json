@@ -1,0 +1,818 @@
+{
+	"name": "oracle-java",
+	"displayName": "Java",
+	"description": "Java Platform Extension for Visual Studio Code",
+	"author": "Oracle",
+	"license": "Apache 2.0",
+	"version": "23.0.1",
+	"preview": false,
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/oracle/javavscode"
+	},
+	"publisher": "Oracle",
+	"icon": "images/logo.png",
+	"categories": [
+		"Programming Languages",
+		"Debuggers",
+		"Testing",
+		"Snippets",
+		"Linters",
+		"Formatters",
+		"Other"
+	],
+	"keywords": [
+		"JDK",
+		"OpenJDK",
+		"Maven",
+		"Gradle",
+		"java properties",
+		"junit",
+		"multi-root ready",
+		"multiroot"
+	],
+	"engines": {
+		"vscode": "^1.76.0"
+	},
+	"activationEvents": [
+		"onLanguage:java",
+		"workspaceContains:**/*.java",
+		"workspaceContains:pom.xml",
+		"workspaceContains:build.gradle",
+		"onDebug",
+		"onDebugDynamicConfigurations"
+	],
+	"main": "./out/extension.js",
+	"l10n": "./l10n",
+	"contributes": {
+		"languages": [
+			{
+				"id": "java",
+				"extensions": [
+					".java",
+					".jav"
+				],
+				"aliases": [
+					"Java",
+					"java"
+				],
+				"configuration": "./language-configuration.json"
+			},
+			{
+				"id": "javascript",
+				"mimetypes": [
+					"text/javascript",
+					"application/javascript"
+				]
+			},
+			{
+				"id": "jackpot-hint",
+				"extensions": [
+					".hint"
+				],
+				"aliases": [
+					"Java Hints"
+				]
+			}
+		],
+		"grammars": [
+			{
+				"language": "jackpot-hint",
+				"scopeName": "source.java",
+				"path": "./syntaxes/java.tmLanguage.json"
+			},
+			{
+				"injectTo": [
+					"source.java"
+				],
+				"scopeName": "inline.java.string.template",
+				"path": "./syntaxes/java-st-injection.json",
+				"embeddedLanguages": {
+					"meta.embedded.java.string.template": "java"
+				}
+			}
+		],
+		"views": {
+			"explorer": [
+				{
+					"id": "foundProjects",
+					"name": "%jdk.views.explorer.projects%",
+					"when": "nbJdkReady"
+				},
+				{
+					"id": "run-config",
+					"name": "%jdk.views.run.config%",
+					"contextualTitle": "%jdk.views.run.config%",
+					"when": "runConfigurationInitialized"
+				}
+			]
+		},
+		"viewsWelcome": [],
+		"configuration": {
+			"title": "Java",
+			"properties": {
+				"jdk.jdkhome": {
+					"type": [
+						"string",
+						"null"
+					],
+					"default": null,
+					"description": "%jdk.configuration.specifyJdk.description%",
+					"scope": "machine-overridable"
+				},
+				"jdk.project.jdkhome": {
+					"type": [
+						"string",
+						"null"
+					],
+					"default": null,
+					"description": "%jdk.configuration.specifyProjectJdk.description%",
+					"scope": "machine-overridable"
+				},
+				"jdk.verbose": {
+					"type": "boolean",
+					"default": false,
+					"description": "%jdk.configuration.verbose.description%"
+				},
+				"jdk.userdir": {
+					"description": "%jdk.configuration.userdir.description%",
+					"type": "string",
+					"enum": [
+						"global",
+						"local"
+					],
+					"enumDescriptions": [
+						"%jdk.configuration.userdir.description.shareData%",
+						"%jdk.configuration.userdir.description.isolated%"
+					],
+					"default": "local",
+					"deprecationMessage": "%jdk.configuration.userdir.deprecationMessage%"
+				},
+				"jdk.revealActiveInProjects": {
+					"type": "boolean",
+					"default": true,
+					"description": "%jdk.configuration.revealActiveInProjects.description%"
+				},
+				"jdk.test.editor.enableShortcuts": {
+					"type": "boolean",
+					"default": false,
+					"description": "%jdk.configuration.testEditor.description%"
+				},
+				"jdk.javadoc.load.timeout": {
+					"type": "integer",
+					"default": 100,
+					"description": "%jdk.configuration.javadoc.timeout.description%"
+				},
+				"jdk.format.settingsPath": {
+					"type": "string",
+					"description": "%jdk.configuration.formatterSettings.description%",
+					"default": null
+				},
+				"jdk.hints.preferences": {
+					"type": "string",
+					"description": "%jdk.configuration.hints.preferences.description%",
+					"default": null
+				},
+				"jdk.java.onSave.organizeImports": {
+					"type": "boolean",
+					"default": true,
+					"description": "%jdk.configuration.organiseImports.description%"
+				},
+				"jdk.java.imports.groups": {
+					"type": "array",
+					"description": "%jdk.configuration.organiseImports.sortingOrder.description%",
+					"default": [
+						"java",
+						"javax",
+						"org",
+						"com",
+						""
+					]
+				},
+				"jdk.java.imports.countForUsingStarImport": {
+					"type": "integer",
+					"description": "%jdk.configuration.countForUsingStarImport.description%",
+					"default": 999,
+					"minimum": 1
+				},
+				"jdk.java.imports.countForUsingStaticStarImport": {
+					"type": "integer",
+					"description": "%jdk.configuration.countForUsingStaticStarImport.description%",
+					"default": 999,
+					"minimum": 1
+				},
+				"jdk.runConfig.arguments": {
+					"type": "string",
+					"default": "",
+					"description": "%jdk.configuration.arguments.description%"
+				},
+				"jdk.runConfig.vmOptions": {
+					"type": "string",
+					"default": "",
+					"description": "%jdk.configuration.vmOptions.description%"
+				},
+				"jdk.serverVmOptions": {
+					"type": "array",
+					"default": [],
+					"description": "%jdk.configuration.serverVmOptions.description%",
+					"scope": "machine-overridable"
+				},
+				"jdk.runConfig.env": {
+					"type": "string",
+					"default": "",
+					"description": "%jdk.configuration.runConfig.env.description%"
+				},
+				"jdk.runConfig.cwd": {
+					"type": "string",
+					"default": "",
+					"description": "%jdk.configuration.runConfig.cwd.description%"
+				},
+				"jdk.advanced.disable.nbjavac": {
+					"type": "boolean",
+					"default": false,
+					"description": "%jdk.configuration.disableNbJavac.description%"
+				},
+				"jdk.advanced.disable.projectSearchLimit": {
+					"type": "boolean",
+					"default": false,
+					"description": "%jdk.configuration.disableProjectSearchLimit.description%"
+				}
+			}
+		},
+		"breakpoints": [
+			{
+				"language": "java"
+			},
+			{
+				"language": "groovy"
+			}
+		],
+		"debuggers": [
+			{
+				"type": "jdk",
+				"label": "Java+",
+				"runtime": "node",
+				"languages": [
+					"java"
+				],
+				"configurationAttributes": {
+					"launch": {
+						"properties": {
+							"mainClass": {
+								"type": "string",
+								"description": "%jdk.debugger.configuration.mainClass.description%",
+								"default": "${file}"
+							},
+							"classPaths": {
+								"type": "array",
+								"items": {
+									"type": "string"
+								},
+								"description": "%jdk.debugger.configuration.classPaths.description%",
+								"default": []
+							},
+							"console": {
+								"type": "string",
+								"enum": [
+									"internalConsole"
+								],
+								"description": "%jdk.debugger.configuration.console.description%",
+								"default": "internalConsole"
+							},
+							"args": {
+								"type": [
+									"string",
+									"null"
+								],
+								"description": "%jdk.debugger.configuration.args.description%",
+								"default": null
+							},
+							"vmArgs": {
+								"type": [
+									"string",
+									"null"
+								],
+								"description": "%jdk.debugger.configuration.vmArgs.description%",
+								"default": null
+							},
+							"cwd": {
+								"type": [
+									"string",
+									"null"
+								],
+								"description": "%jdk.debugger.configuration.cwd.description%",
+								"default": null
+							},
+							"env": {
+								"type": [
+									"object"
+								],
+								"description": "%jdk.debugger.configuration.env.description%",
+								"default": {}
+							},
+							"launchConfiguration": {
+								"type": [
+									"string",
+									"null"
+								],
+								"description": "%jdk.debugger.configuration.launchConfiguration.description%"
+							}
+						}
+					},
+					"attach": {
+						"properties": {
+							"hostName": {
+								"type": "string",
+								"default": "localhost",
+								"description": "%jdk.debugger.configuration.attach.hostName.description%"
+							},
+							"port": {
+								"type": "string",
+								"default": "8000",
+								"description": "%jdk.debugger.configuration.attach.port.description%"
+							},
+							"sharedMemoryName": {
+								"type": "string",
+								"description": "%jdk.debugger.configuration.attach.sharedMemoryName.description%"
+							},
+							"processId": {
+								"type": "string",
+								"default": "${command:jdk.java.attachDebugger.pickProcess}",
+								"description": "%jdk.debugger.configuration.attach.processId.description%"
+							},
+							"listen": {
+								"type": "string",
+								"default": "false",
+								"description": "%jdk.debugger.configuration.attach.listen.description%"
+							},
+							"timeout": {
+								"type": "string",
+								"default": "30000",
+								"description": "%jdk.debugger.configuration.attach.timeout.description%"
+							}
+						}
+					}
+				},
+				"initialConfigurations": [
+					{
+						"type": "jdk",
+						"request": "launch",
+						"name": "%jdk.initialConfigurations.launchJavaApp.name%"
+					}
+				],
+				"configurationSnippets": [
+					{
+						"label": "%jdk.configurationSnippets.label%",
+						"description": "%jdk.configurationSnippets.description%",
+						"body": {
+							"type": "jdk",
+							"request": "launch",
+							"name": "%jdk.initialConfigurations.launchJavaApp.name%"
+						}
+					}
+				]
+			}
+		],
+		"commands": [
+			{
+				"command": "jdk.workspace.compile",
+				"title": "%jdk.workspace.compile%",
+				"category": "Java"
+			},
+			{
+				"command": "jdk.workspace.clean",
+				"title": "%jdk.workspace.clean%",
+				"category": "Java"
+			},
+			{
+				"command": "jdk.workspace.new",
+				"title": "%jdk.workspace.new%",
+				"category": "Java",
+				"icon": "$(new-file)"
+			},
+			{
+				"command": "jdk.workspace.newproject",
+				"title": "%jdk.workspace.newproject%",
+				"category": "Java",
+				"icon": "$(new-folder)"
+			},
+			{
+				"command": "jdk.java.goto.super.implementation",
+				"title": "%jdk.java.goto.super.implementation%",
+				"category": "Java"
+			},
+			{
+				"command": "jdk.open.type",
+				"title": "%jdk.open.type%",
+				"category": "Java"
+			},
+			{
+				"command": "jdk.foundProjects.deleteEntry",
+				"title": "%jdk.foundProjects.deleteEntry%"
+			},
+			{
+				"command": "jdk:Edit:org.openide.actions.DeleteAction",
+				"title": "%jdk.Edit.org.openide.actions.DeleteAction%"
+			},
+			{
+				"command": "workbench.action.debug.run",
+				"title": "%workbench.action.debug.run%",
+				"icon": "$(run)"
+			},
+			{
+				"command": "workbench.action.debug.start",
+				"title": "%workbench.action.debug.start%",
+				"icon": "$(debug-alt)"
+			},
+			{
+				"command": "jdk.project.run",
+				"title": "%jdk.project.run%",
+				"category": "Project",
+				"icon": "$(run)"
+			},
+			{
+				"command": "jdk.project.debug",
+				"title": "%jdk.project.debug%",
+				"category": "Project",
+				"icon": "$(debug-alt)"
+			},
+			{
+				"command": "jdk.project.test",
+				"title": "%jdk.project.test%",
+				"category": "Project",
+				"icon": "$(testing-run-all-icon)"
+			},
+			{
+				"command": "jdk.project.compile",
+				"title": "%jdk.project.compile%",
+				"category": "Project"
+			},
+			{
+				"command": "jdk.project.clean",
+				"title": "%jdk.project.clean%",
+				"category": "Project"
+			},
+			{
+				"command": "jdk.workspace.configureRunSettings",
+				"title": "%jdk.workspace.configureRunSettings%",
+				"icon": "$(edit)"
+			},
+			{
+				"command": "jdk.select.editor.projects",
+				"title": "%jdk.select.editor.projects%",
+				"category": "Project"
+			},
+			{
+				"command": "workbench.action.debug.run",
+				"title": "%workbench.action.debug.run%",
+				"icon": "$(run)"
+			},
+			{
+				"command": "workbench.action.debug.start",
+				"title": "%workbench.action.debug.start%",
+				"icon": "$(debug-alt)"
+			},
+			{
+				"command": "testing.runAll",
+				"title": "%testing.runAll%",
+				"category": "Test"
+			},
+			{
+				"command": "jdk.addEventListener",
+				"title": "%jdk.addEventListener%"
+			},
+			{
+				"command": "jdk.select.editor.projects",
+				"title": "%jdk.select.editor.projects%",
+				"category": "Project"
+			},
+			{
+				"command": "jdk.download.jdk",
+				"title": "%jdk.download.jdk%"
+			},
+			{
+				"command": "jdk.open.test",
+				"title": "%jdk.open.test%",
+				"category": "Java"
+			},
+			{
+				"command": "jdk.delete.cache",
+				"title": "%jdk.delete.cache%"
+			}
+		],
+		"keybindings": [
+			{
+				"command": "jdk.workspace.compile",
+				"key": "shift+alt+b",
+				"when": "nbJdkReady"
+			},
+			{
+				"command": "jdk.java.goto.super.implementation",
+				"key": "alt+U",
+				"mac": "alt+cmd+U",
+				"when": "editorHasCodeActionsProvider && editorTextFocus"
+			},
+			{
+				"command": "editor.action.sourceAction",
+				"key": "alt+insert",
+				"mac": "ctrl+alt+enter",
+				"when": "editorHasCodeActionsProvider && editorTextFocus && !editorReadonly"
+			}
+		],
+		"menus": {
+			"editor/context": [
+				{
+					"command": "jdk.java.goto.super.implementation",
+					"when": "nbJdkReady && editorLangId == java && editorTextFocus",
+					"group": "navigation@100"
+				},
+				{
+					"command": "jdk.open.test",
+					"when": "nbJdkReady && editorLangId == java",
+					"group": "navigation@101"
+				},
+				{
+					"command": "jdk.project.run",
+					"when": "nbJdkReady && editorLangId == java && resourceExtname == .java",
+					"group": "javadebug@1"
+				},
+				{
+					"command": "jdk.project.debug",
+					"when": "nbJdkReady && editorLangId == java && resourceExtname == .java",
+					"group": "javadebug@2"
+				}
+			],
+			"explorer/context": [
+				{
+					"command": "jdk.workspace.new",
+					"when": "nbJdkReady && explorerResourceIsFolder",
+					"group": "navigation@3"
+				},
+				{
+					"command": "jdk.open.test",
+					"when": "nbJdkReady && resourceExtname == .java",
+					"group": "goto@1"
+				},
+				{
+					"command": "jdk.project.run",
+					"when": "nbJdkReady && resourceExtname == .java",
+					"group": "javadebug@1"
+				},
+				{
+					"command": "jdk.project.debug",
+					"when": "nbJdkReady && resourceExtname == .java",
+					"group": "javadebug@2"
+				}
+			],
+			"commandPalette": [
+				{
+					"command": "jdk.workspace.new"
+				},
+				{
+					"command": "jdk.workspace.newproject"
+				},
+				{
+					"command": "jdk.download.jdk"
+				},
+				{
+					"command": "jdk.workspace.compile",
+					"when": "nbJdkReady"
+				},
+				{
+					"command": "jdk.open.test",
+					"when": "nbJdkReady && editorLangId == java"
+				},
+				{
+					"command": "jdk.java.goto.super.implementation",
+					"when": "nbJdkReady && editorLangId == java"
+				},
+				{
+					"command": "jdk.foundProjects.deleteEntry",
+					"when": "false"
+				},
+				{
+					"command": "jdk:Edit:org.openide.actions.DeleteAction",
+					"when": "false"
+				},
+				{
+					"command": "jdk.workspace.configureRunSettings",
+					"when": "false"
+				},
+				{
+					"command": "jdk.addEventListener",
+					"when": "false"
+				}
+			],
+			"view/title": [
+				{
+					"command": "jdk.workspace.newproject",
+					"when": "nbJdkReady && view == foundProjects",
+					"group": "navigation"
+				},
+				{
+					"command": "jdk.workspace.compile",
+					"when": "nbJdkReady && view == foundProjects"
+				},
+				{
+					"command": "jdk.workspace.clean",
+					"when": "nbJdkReady && view == foundProjects"
+				},
+				{
+					"command": "testing.runAll",
+					"when": "nbJdkReady && view == foundProjects"
+				},
+				{
+					"command": "workbench.action.debug.run",
+					"when": "nbJdkReady && view == foundProjects"
+				},
+				{
+					"command": "workbench.action.debug.start",
+					"when": "nbJdkReady && view == foundProjects"
+				}
+			],
+			"view/item/context": [
+				{
+					"command": "jdk.foundProjects.deleteEntry",
+					"when": "view == foundProjects && viewItem == node"
+				},
+				{
+					"command": "jdk:Edit:org.openide.actions.DeleteAction",
+					"when": "viewItem =~ /cap:delete/",
+					"group": "db@50"
+				},
+				{
+					"command": "jdk.workspace.new",
+					"when": "view == foundProjects && viewItem =~ /is:folder/",
+					"group": "inline@1"
+				},
+				{
+					"command": "jdk.project.run",
+					"when": "view == foundProjects && viewItem =~ /is:project/ && viewItem =~ /^(?!.*is:projectRoot)/",
+					"group": "inline@10"
+				},
+				{
+					"command": "jdk.project.debug",
+					"when": "view == foundProjects && viewItem =~ /is:project/ && viewItem =~ /^(?!.*is:projectRoot)/",
+					"group": "inline@11"
+				},
+				{
+					"command": "jdk.project.test",
+					"when": "view == foundProjects && viewItem =~ /is:project/ && viewItem =~ /^(?!.*is:projectRoot)/",
+					"group": "F@30"
+				},
+				{
+					"command": "jdk.project.compile",
+					"when": "view == foundProjects && viewItem =~ /is:project/",
+					"group": "F@10"
+				},
+				{
+					"command": "jdk.project.clean",
+					"when": "view == foundProjects && viewItem =~ /is:project/",
+					"group": "F@20"
+				},
+				{
+					"command": "jdk.workspace.configureRunSettings",
+					"when": "view == run-config && viewItem == configureRunSettings",
+					"group": "inline@1"
+				}
+			]
+		},
+		"netbeans.iconMapping": [
+			{
+				"uriExpression": "nbres:/org/netbeans/modules/gradle/resources/gradle",
+				"codeicon": "project"
+			},
+			{
+				"uriExpression": "nbres:/org/netbeans/modules/gradle/java/resources/javaseProjectIcon",
+				"codeicon": "project"
+			},
+			{
+				"uriExpression": "nbres:/org/netbeans/modules/maven/resources/jaricon",
+				"codeicon": "project"
+			},
+			{
+				"uriExpression": "nbres:/org/netbeans/modules/gradle/resources/libraries",
+				"codeicon": "settings-gear"
+			},
+			{
+				"uriExpression": "nbres:/org/netbeans/modules/gradle/resources/(empty|module-artifact)",
+				"codeicon": "file-zip"
+			},
+			{
+				"uriExpression": "nbres:/org/netbeans/modules/maven/DependencyIcon",
+				"codeicon": "file-zip"
+			},
+			{
+				"uriExpression": "nbres:/org/netbeans/modules/maven/TransitiveDependencyIcon",
+				"codeicon": "library"
+			},
+			{
+				"uriExpression": "nbres:/org/netbeans/spi/java/project/support/ui/package(Empty)?",
+				"codeicon": "file-submodule"
+			},
+			{
+				"uriExpression": "nbres:/org/netbeans/modules/java/resources/(abstract_class_file|class|enum_file)",
+				"codeicon": "symbol-class"
+			},
+			{
+				"uriExpression": "nbres:/org/netbeans/modules/java/resources/(annotation_file|interface_file)",
+				"codeicon": "symbol-interface"
+			},
+			{
+				"uriExpression": "nbres:/org/netbeans/modules/nbcode/integration/resources/uidefaults/Tree.(open|closed)Icon",
+				"valueMatch": [
+					" [0-9]+([A-Z][A-z]+)?SourceRoot | Dependencies[A-Z]+ | OtherRoots | projectfiles | BootCPNode "
+				],
+				"codeicon": "file-submodule"
+			},
+			{
+				"uriExpression": "nbres:/org/netbeans/modules/nbcode/integration/resources/uidefaults/Tree.(open|closed)Icon",
+				"valueMatch": [
+					" [0-9]+([A-z]+).(java|groovy|generated|resources) "
+				],
+				"codeicon": "file-submodule"
+			},
+			{
+				"uriExpression": "nbres:/org/netbeans/modules/nbcode/integration/resources/uidefaults/Tree.(open|closed)Icon",
+				"codeicon": "*folder"
+			},
+			{
+				"uriExpression": "nbres:/org/netbeans/modules/java/api/common/project/ui/resources/platform",
+				"codeicon": "vm"
+			},
+			{
+				"uriExpression": "nbres:/org/netbeans/modules/cloud/oracle/resources/tenancy.svg",
+				"codeicon": "cloud"
+			},
+			{
+				"uriExpression": "nbres:/org/netbeans/modules/cloud/oracle/resources/compartment.svg",
+				"codeicon": "archive"
+			},
+			{
+				"uriExpression": "nbres:/org/openide/nodes/wait.gif",
+				"codeicon": "watch"
+			}
+		],
+		"jsonValidation": [
+			{
+				"fileMatch": "package.json",
+				"url": "./schemas/package.schema.json"
+			}
+		]
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./ && node ./esbuild.js",
+		"watch": "tsc -watch -p ./ | node ./esbuild.js --watch",
+		"test:unit": "npm run compile && node ./out/test/unit/runTest.js",
+		"test:coverage": "nyc --require ts-node/register npm run test:unit",
+		"test": "npm run compile && node ./out/test/integration/runTest.js",
+		"nbcode": "node ./out/test/launchNbcode.js",
+		"nbjavac": "node ./out/test/launchNbcode.js -J-Dnetbeans.close=true --modules --install .*nbjavac.*",
+		"apisupport": "node ./out/test/launchNbcode.js -J-Dnetbeans.close=true --modules --install '(org.netbeans.libs.xerces|org.netbeans.modules.editor.structure|org.netbeans.modules.xml|org.netbeans.modules.xml.axi|org.netbeans.modules.xml.retriever|org.netbeans.modules.xml.schema.model|org.netbeans.modules.xml.tax|org.netbeans.modules.xml.text|.*apisupport.*|org.netbeans.modules.debugger.jpda.ant)' && node ./out/test/launchNbcode.js -J-Dnetbeans.close=true --modules --enable .*apisupport.ant",
+		"artifactory:check": "node ./esbuild.js --artifactory-check"
+	},
+	"devDependencies": {
+		"@istanbuljs/nyc-config-typescript": "^1.0.2",
+		"@types/chai": "^4.3.17",
+		"@types/glob": "^7.1.1",
+		"@types/mocha": "^9.0.0",
+		"@types/node": "^13.11.0",
+		"@types/ps-node": "^0.1.0",
+		"@types/sinon": "^17.0.3",
+		"@types/vscode": "^1.76.0",
+		"@types/vscode-webview": "^1.57.1",
+		"@vscode/codicons": "0.0.29",
+		"@vscode/test-electron": "^2.4.1",
+		"chai": "^4.5.0",
+		"esbuild": "^0.16.17",
+		"glob": "^7.1.6",
+		"mocha": "^9.1.2",
+		"nyc": "^17.1.0",
+		"ps-node": "^0.1.6",
+		"sinon": "^19.0.2",
+		"ts-mockito": "^2.6.1",
+		"ts-node": "^10.9.2",
+		"typescript": "^4.6.4",
+		"vscode-uri": "^3.0.8"
+	},
+	"dependencies": {
+		"@vscode/debugadapter": "^1.65.0",
+		"@vscode/l10n": "^0.0.18",
+		"jsonc-parser": "3.3.1",
+		"vscode-languageclient": "^8.1.0"
+	},
+	"__metadata": {
+		"id": "17ce260e-a479-4289-b71d-93cf366d3708",
+		"publisherId": "387b4c2f-44a8-4cb0-9a04-6fa0832e5c5e",
+		"publisherDisplayName": "Oracle Corporation",
+		"targetPlatform": "undefined",
+		"isApplicationScoped": false,
+		"isPreReleaseVersion": false,
+		"hasPreReleaseVersion": false,
+		"installedTimestamp": 1732751670347,
+		"pinned": false,
+		"preRelease": false,
+		"source": "gallery"
+	}
+}

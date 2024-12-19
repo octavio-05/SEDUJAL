@@ -101,7 +101,7 @@ $id_evaluacion = $_GET['id_evaluacion']; // Obtener ID desde la URL
 
     <!-- Pregunta 2 -->
     <div class="mb-4">
-        <label for="pregunta_3" class="form-label fw-bold">¿Tu profesor propone ejemplos o ejercisios que vinvulan los temas con la practica?</label>
+        <label for="pregunta_3" class="form-label fw-bold">¿Tu profesor propone ejemplos o ejercicios que vinculan los temas con la práctica?</label>
  
     <select class="form-control"  id="pregunta_3" name="pregunta_3" required>
         <option value="" disabled selected>Selecciona una opción</option>
@@ -114,7 +114,7 @@ $id_evaluacion = $_GET['id_evaluacion']; // Obtener ID desde la URL
     </div>
     <!-- Pregunta 3 -->
     <div class="mb-4">
-        <label for="pregunta_4" class="form-label fw-bold">¿Al principio de la asigantura, tu profesor presento el programa de l amateria y la manera de evaluarla?</label>
+        <label for="pregunta_4" class="form-label fw-bold">¿Al principio de la asignatura, tu profesor presentó el programa de la materia y la manera de evaluarla?</label>
  
     <select class="form-control" id="pregunta_4" name="pregunta_4" required>
         <option value="" disabled selected>Selecciona una opción</option>
@@ -140,7 +140,7 @@ $id_evaluacion = $_GET['id_evaluacion']; // Obtener ID desde la URL
     </div>
     <!-- Pregunta 5 -->
     <div class="mb-4">
-        <label for="pregunta_6" class="form-label fw-bold">¿Tu profesor organiza actividades que permiten ejercitar la expresion oral y escrita?</label>
+        <label for="pregunta_6" class="form-label fw-bold">¿Tu profesor organiza actividades que permiten ejercitar la expresión oral y escrita?</label>
  
     <select class="form-control"  id="pregunta_6" name="pregunta_6">
         <option value="" disabled selected>Selecciona una opción</option>
@@ -153,7 +153,7 @@ $id_evaluacion = $_GET['id_evaluacion']; // Obtener ID desde la URL
     </div>
     <!-- Pregunta 6 -->
     <div class="mb-4">
-        <label for="pregunta_7" class="form-label fw-bold">¿Tu profesor promueve actividades participativas que permiten colaborar con los demas compañeros ?</label>
+        <label for="pregunta_7" class="form-label fw-bold">¿Tu profesor promueve actividades participativas que permiten colaborar con los demás compañeros?</label>
  
     <select class="form-control"  id="pregunta_7" name="pregunta_7">
         <option value="" disabled selected>Selecciona una opción</option>
@@ -166,7 +166,7 @@ $id_evaluacion = $_GET['id_evaluacion']; // Obtener ID desde la URL
     </div>
     <!-- Pregunta 7 -->
     <div class="mb-4">
-        <label for="pregunta_8" class="form-label fw-bold">¿Tu profesor presenta y expone las clases las clases de manera organizada y estructurada?</label>
+        <label for="pregunta_8" class="form-label fw-bold">¿Tu profesor presenta y expone las clases de manera organizada y estructurada?</label>
  
     <select class="form-control"  id="pregunta_8" name="pregunta_8">
         <option value="" disabled selected>Selecciona una opción</option>
@@ -179,7 +179,7 @@ $id_evaluacion = $_GET['id_evaluacion']; // Obtener ID desde la URL
     </div>
     <!-- Pregunta 8 -->
     <div class="mb-4">
-        <label>¿Tu profesor muestra compromiso y entusiasmo sus actividades docentes?</label>
+        <label for="pregunta_9" class="form-label fw-bold">¿Tu profesor muestra compromiso y entusiasmo en sus actividades docentes?</label>
     <select class="form-control"  id="pregunta_9" name="pregunta_9">
         <option value="" disabled selected>Selecciona una opción</option>
         <option value="1">Totalmente de acuerdo</option>
@@ -204,7 +204,7 @@ $id_evaluacion = $_GET['id_evaluacion']; // Obtener ID desde la URL
     </div>
     <!-- Pregunta 11 -->
     <div class="mb-4">
-        <label for="pregunta_11" class="form-label fw-bold">Tu profesor reconoce los exitos y logros en las actividades de aprendizaje?</label>
+        <label for="pregunta_11" class="form-label fw-bold">¿Tu profesor reconoce los éxitos y logros en las actividades de aprendizaje?</label>
  
     <select class="form-control"  id="pregunta_11" name="pregunta_11">
         <option value="" disabled selected>Selecciona una opción</option>
@@ -217,7 +217,7 @@ $id_evaluacion = $_GET['id_evaluacion']; // Obtener ID desde la URL
     </div>
     <!-- Pregunta 11 -->
     <div class="mb-4">
-        <label for="pregunta_12" class="form-label fw-bold">Tu profesor hace interesante el aprendizaje de la materia impartida?</label>
+        <label for="pregunta_12" class="form-label fw-bold">¿Tu profesor hace interesante el aprendizaje de la materia impartida?</label>
  
     <select class="form-control"  id="pregunta_12" name="pregunta_12">
         <option value="" disabled selected>Selecciona una opción</option>
@@ -230,7 +230,7 @@ $id_evaluacion = $_GET['id_evaluacion']; // Obtener ID desde la URL
     </div>
     <!-- Pregunta 12 -->
     <div class="mb-4">
-        <label for="pregunta_13" class="form-label fw-bold">Tu profesor asiste regular y puntualmente?</label>
+        <label for="pregunta_13" class="form-label fw-bold">¿Tu profesor asiste de manera regular y puntual?</label>
  
     <select class="form-control"  id="pregunta_13" name="pregunta_13">
         <option value="" disabled selected>Selecciona una opción</option>
@@ -243,7 +243,7 @@ $id_evaluacion = $_GET['id_evaluacion']; // Obtener ID desde la URL
     </div>
     <!-- Pregunta 13 -->
     <div class="mb-4">
-        <label for="pregunta_14" class="form-label fw-bold">Tu profesor promueve mantener limpias, ordenadas y cuidar las instalaciones ?</label>
+        <label for="pregunta_14" class="form-label fw-bold">¿Tu profesor promueve mantener limpias, ordenadas y cuidadas las instalaciones?</label>
  
     <select class="form-control"  id="pregunta_14" name="pregunta_14">
         <option value="" disabled selected>Selecciona una opción</option>
@@ -256,7 +256,7 @@ $id_evaluacion = $_GET['id_evaluacion']; // Obtener ID desde la URL
     </div>
     <!-- Pregunta 14 -->
     <div class="mb-4">
-        <label for="pregunta_15" class="form-label fw-bold">Tu profesor es accesible y esta dispuesto a brindarte ayuda academica?</label>
+        <label for="pregunta_15" class="form-label fw-bold">¿Tu profesor es accesible y está dispuesto a brindarte ayuda académica?</label>
  
     <select class="form-control"  id="pregunta_15" name="pregunta_15">
         <option value="" disabled selected>Selecciona una opción</option>
@@ -269,7 +269,7 @@ $id_evaluacion = $_GET['id_evaluacion']; // Obtener ID desde la URL
     </div>
     <!-- Pregunta 15 -->
     <div class="mb-4">
-        <label for="pregunta_16" class="form-label fw-bold">En general, pienso que es buen docente</label>
+        <label for="pregunta_16" class="form-label fw-bold">En general, pienso que es un buen docente.</label>
  
     <select class="form-control"  id="pregunta_16" name="pregunta_16">
         <option value="" disabled selected>Selecciona una opción</option>
@@ -282,7 +282,7 @@ $id_evaluacion = $_GET['id_evaluacion']; // Obtener ID desde la URL
     </div>
     <!-- Pregunta 16 -->
     <div class="mb-4">
-        <label for="pregunta_17" class="form-label fw-bold">Lo aprendido en la asignatura me ha servido para mi desarrollo profecional</label>
+        <label for="pregunta_17" class="form-label fw-bold">Lo aprendido en la asignatura me ha servido para mi desarrollo profesional.</label>
  
     <select class="form-control"  id="pregunta_17" name="pregunta_17">
         <option value="" disabled selected>Selecciona una opción</option>
@@ -295,7 +295,7 @@ $id_evaluacion = $_GET['id_evaluacion']; // Obtener ID desde la URL
     </div>
     <!-- Pregunta 17 -->
     <div class="mb-4">
-        <label for="pregunta_18" class="form-label fw-bold">Estoy satisfecho(a) por mi nivel de desempeño y aprendizaje logrado gracias a la labor docente</label>
+        <label for="pregunta_18" class="form-label fw-bold">Estoy satisfecho(a) con mi nivel de desempeño y aprendizaje logrado gracias a la labor docente.</label>
  
     <select class="form-control"  id="pregunta_18" name="pregunta_18">
         <option value="" disabled selected>Selecciona una opción</option>
@@ -308,7 +308,7 @@ $id_evaluacion = $_GET['id_evaluacion']; // Obtener ID desde la URL
     </div>
     <!-- Pregunta 18 -->
     <div class="mb-4">
-        <label for="pregunta_19" class="form-label fw-bold">La atencion en el area administrativa es de buena manera,pronta y oportuna resolviendo mis necesidades</label>
+        <label for="pregunta_19" class="form-label fw-bold">La atención en el área administrativa es adecuada, pronta y oportuna, resolviendo mis necesidades.</label>
  
     <select class="form-control"  id="pregunta_19" name="pregunta_19" >
         <option value="" disabled selected>Selecciona una opción</option>
@@ -321,7 +321,7 @@ $id_evaluacion = $_GET['id_evaluacion']; // Obtener ID desde la URL
     </div>
     <!-- Pregunta 19 -->
     <div class="mb-4">
-        <label for="pregunta_20" class="form-label fw-bold">Las instalaciones son comodas y adecuadas</label>
+        <label for="pregunta_20" class="form-label fw-bold">Las instalaciones son cómodas y adecuadas.</label>
  
     <select class="form-control"  id="pregunta_20" name="pregunta_20">
         <option value="" disabled selected>Selecciona una opción</option>
@@ -334,7 +334,7 @@ $id_evaluacion = $_GET['id_evaluacion']; // Obtener ID desde la URL
     </div>
     <!-- Pregunta 20 -->
     <div class="mb-4">
-        <label for="pregunta_21" class="form-label fw-bold">La escuela me da la seguridad de lo que estoy estudiando </label>
+        <label for="pregunta_21" class="form-label fw-bold">La escuela me da la seguridad de que lo que estoy estudiando es valioso.</label>
  
     <select class="form-control"  id="pregunta_21" name="pregunta_21">
         <option value="" disabled selected>Selecciona una opción</option>
@@ -347,7 +347,7 @@ $id_evaluacion = $_GET['id_evaluacion']; // Obtener ID desde la URL
     </div>
     <!-- Pregunta 21 -->
     <div class="mb-4">
-        <label for="pregunta_22" class="form-label fw-bold">Yo recomendario UNIJAL a otras personas</label>
+        <label for="pregunta_22" class="form-label fw-bold">Recomendaría UNIJAL a otras personas.</label>
  
     <select class="form-control"  id="pregunta_22" name="pregunta_22">
         <option value="" disabled selected>Selecciona una opción</option>

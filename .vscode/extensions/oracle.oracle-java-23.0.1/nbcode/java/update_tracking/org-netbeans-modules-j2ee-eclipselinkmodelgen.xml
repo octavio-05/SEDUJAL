@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?><module codename="org.netbeans.modules.j2ee.eclipselinkmodelgen/1">
+    <module_version install_time="1732605837693" last="true" origin="installer" specification_version="1.57">
+        <file crc="2071491517" name="config/Modules/org-netbeans-modules-j2ee-eclipselinkmodelgen.xml"/>
+        <file crc="2629884436" name="modules/ext/eclipselink/org.eclipse.persistence.jpa.modelgen.processor-2.7.12.jar"/>
+        <file crc="4063569805" name="modules/org-netbeans-modules-j2ee-eclipselinkmodelgen.jar"/>
+    </module_version>
+</module>

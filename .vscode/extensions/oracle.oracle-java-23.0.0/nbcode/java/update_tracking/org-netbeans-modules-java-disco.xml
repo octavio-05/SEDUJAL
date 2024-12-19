@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?><module codename="org.netbeans.modules.java.disco">
+    <module_version install_time="1727786750802" last="true" origin="installer" specification_version="2.9">
+        <file crc="3715367766" name="config/Modules/org-netbeans-modules-java-disco.xml"/>
+        <file crc="1610228062" name="modules/ext/checker-qual-3.9.1.jar"/>
+        <file crc="1280000447" name="modules/ext/discoclient-2.0.24.jar"/>
+        <file crc="3124020077" name="modules/ext/jdktools-11.0.11.jar"/>
+        <file crc="3346510775" name="modules/org-netbeans-modules-java-disco.jar"/>
+    </module_version>
+</module>

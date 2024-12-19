@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><module codename="org.netbeans.modules.languages.antlr">
+    <module_version install_time="1732605863388" last="true" origin="installer" specification_version="1.7">
+        <file crc="1848741262" name="config/Modules/org-netbeans-modules-languages-antlr.xml"/>
+        <file crc="451043794" name="modules/org-netbeans-modules-languages-antlr.jar"/>
+    </module_version>
+</module>
